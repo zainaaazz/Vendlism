@@ -55,6 +55,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.edtAmount = new System.Windows.Forms.NumericUpDown();
             this.btnPay = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct3)).BeginInit();
@@ -65,12 +67,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblProduct1
             // 
             this.lblProduct1.AutoSize = true;
+            this.lblProduct1.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct1.ForeColor = System.Drawing.Color.White;
             this.lblProduct1.Location = new System.Drawing.Point(130, 229);
             this.lblProduct1.Name = "lblProduct1";
             this.lblProduct1.Size = new System.Drawing.Size(72, 18);
@@ -86,6 +91,9 @@
             this.imgProduct1.Size = new System.Drawing.Size(73, 62);
             this.imgProduct1.TabIndex = 1;
             this.imgProduct1.TabStop = false;
+            this.imgProduct1.Click += new System.EventHandler(this.imgProduct1_Click);
+            this.imgProduct1.MouseEnter += new System.EventHandler(this.imgProduct1_MouseEnter);
+            this.imgProduct1.MouseLeave += new System.EventHandler(this.imgProduct1_MouseLeave);
             // 
             // btnAdmin
             // 
@@ -106,11 +114,16 @@
             this.imgProduct2.Size = new System.Drawing.Size(73, 62);
             this.imgProduct2.TabIndex = 4;
             this.imgProduct2.TabStop = false;
+            this.imgProduct2.Click += new System.EventHandler(this.imgProduct2_Click);
+            this.imgProduct2.MouseEnter += new System.EventHandler(this.imgProduct2_MouseEnter);
+            this.imgProduct2.MouseLeave += new System.EventHandler(this.imgProduct2_MouseLeave);
             // 
             // lblProduct2
             // 
             this.lblProduct2.AutoSize = true;
+            this.lblProduct2.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct2.ForeColor = System.Drawing.Color.White;
             this.lblProduct2.Location = new System.Drawing.Point(255, 229);
             this.lblProduct2.Name = "lblProduct2";
             this.lblProduct2.Size = new System.Drawing.Size(72, 18);
@@ -126,11 +139,16 @@
             this.imgProduct3.Size = new System.Drawing.Size(73, 62);
             this.imgProduct3.TabIndex = 6;
             this.imgProduct3.TabStop = false;
+            this.imgProduct3.Click += new System.EventHandler(this.imgProduct3_Click);
+            this.imgProduct3.MouseEnter += new System.EventHandler(this.imgProduct3_MouseEnter);
+            this.imgProduct3.MouseLeave += new System.EventHandler(this.imgProduct3_MouseLeave);
             // 
             // lblProduct3
             // 
             this.lblProduct3.AutoSize = true;
+            this.lblProduct3.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct3.ForeColor = System.Drawing.Color.White;
             this.lblProduct3.Location = new System.Drawing.Point(381, 229);
             this.lblProduct3.Name = "lblProduct3";
             this.lblProduct3.Size = new System.Drawing.Size(72, 18);
@@ -146,11 +164,16 @@
             this.imgProduct4.Size = new System.Drawing.Size(73, 62);
             this.imgProduct4.TabIndex = 8;
             this.imgProduct4.TabStop = false;
+            this.imgProduct4.Click += new System.EventHandler(this.imgProduct4_Click);
+            this.imgProduct4.MouseEnter += new System.EventHandler(this.imgProduct4_MouseEnter);
+            this.imgProduct4.MouseLeave += new System.EventHandler(this.imgProduct4_MouseLeave);
             // 
             // lblProduct4
             // 
             this.lblProduct4.AutoSize = true;
+            this.lblProduct4.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct4.ForeColor = System.Drawing.Color.White;
             this.lblProduct4.Location = new System.Drawing.Point(130, 334);
             this.lblProduct4.Name = "lblProduct4";
             this.lblProduct4.Size = new System.Drawing.Size(72, 18);
@@ -166,11 +189,17 @@
             this.imgProduct5.Size = new System.Drawing.Size(73, 62);
             this.imgProduct5.TabIndex = 10;
             this.imgProduct5.TabStop = false;
+            this.imgProduct5.Click += new System.EventHandler(this.imgProduct5_Click);
+            this.imgProduct5.MouseEnter += new System.EventHandler(this.imgProduct5_MouseEnter);
+            this.imgProduct5.MouseLeave += new System.EventHandler(this.imgProduct5_MouseLeave);
+            this.imgProduct5.MouseHover += new System.EventHandler(this.imgProduct5_MouseHover);
             // 
             // lblProduct5
             // 
             this.lblProduct5.AutoSize = true;
+            this.lblProduct5.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct5.ForeColor = System.Drawing.Color.White;
             this.lblProduct5.Location = new System.Drawing.Point(259, 334);
             this.lblProduct5.Name = "lblProduct5";
             this.lblProduct5.Size = new System.Drawing.Size(72, 18);
@@ -186,11 +215,16 @@
             this.imgProduct6.Size = new System.Drawing.Size(73, 62);
             this.imgProduct6.TabIndex = 12;
             this.imgProduct6.TabStop = false;
+            this.imgProduct6.Click += new System.EventHandler(this.imgProduct6_Click);
+            this.imgProduct6.MouseEnter += new System.EventHandler(this.imgProduct6_MouseEnter);
+            this.imgProduct6.MouseLeave += new System.EventHandler(this.imgProduct6_MouseLeave);
             // 
             // lblProduct6
             // 
             this.lblProduct6.AutoSize = true;
+            this.lblProduct6.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct6.ForeColor = System.Drawing.Color.White;
             this.lblProduct6.Location = new System.Drawing.Point(381, 334);
             this.lblProduct6.Name = "lblProduct6";
             this.lblProduct6.Size = new System.Drawing.Size(72, 18);
@@ -206,11 +240,16 @@
             this.imgProduct8.Size = new System.Drawing.Size(73, 62);
             this.imgProduct8.TabIndex = 14;
             this.imgProduct8.TabStop = false;
+            this.imgProduct8.Click += new System.EventHandler(this.imgProduct8_Click);
+            this.imgProduct8.MouseEnter += new System.EventHandler(this.imgProduct8_MouseEnter);
+            this.imgProduct8.MouseLeave += new System.EventHandler(this.imgProduct8_MouseLeave);
             // 
             // lblProduct8
             // 
             this.lblProduct8.AutoSize = true;
+            this.lblProduct8.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct8.ForeColor = System.Drawing.Color.White;
             this.lblProduct8.Location = new System.Drawing.Point(255, 429);
             this.lblProduct8.Name = "lblProduct8";
             this.lblProduct8.Size = new System.Drawing.Size(72, 18);
@@ -226,11 +265,16 @@
             this.imgProduct9.Size = new System.Drawing.Size(73, 62);
             this.imgProduct9.TabIndex = 16;
             this.imgProduct9.TabStop = false;
+            this.imgProduct9.Click += new System.EventHandler(this.imgProduct9_Click);
+            this.imgProduct9.MouseEnter += new System.EventHandler(this.imgProduct9_MouseEnter);
+            this.imgProduct9.MouseLeave += new System.EventHandler(this.imgProduct9_MouseLeave);
             // 
             // lblProduct9
             // 
             this.lblProduct9.AutoSize = true;
+            this.lblProduct9.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct9.ForeColor = System.Drawing.Color.White;
             this.lblProduct9.Location = new System.Drawing.Point(381, 429);
             this.lblProduct9.Name = "lblProduct9";
             this.lblProduct9.Size = new System.Drawing.Size(72, 18);
@@ -247,11 +291,16 @@
             this.imgProduct7.Size = new System.Drawing.Size(73, 62);
             this.imgProduct7.TabIndex = 18;
             this.imgProduct7.TabStop = false;
+            this.imgProduct7.Click += new System.EventHandler(this.imgProduct7_Click);
+            this.imgProduct7.MouseEnter += new System.EventHandler(this.imgProduct7_MouseEnter);
+            this.imgProduct7.MouseLeave += new System.EventHandler(this.imgProduct7_MouseLeave);
             // 
             // lblProduct7
             // 
             this.lblProduct7.AutoSize = true;
+            this.lblProduct7.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProduct7.ForeColor = System.Drawing.Color.White;
             this.lblProduct7.Location = new System.Drawing.Point(130, 429);
             this.lblProduct7.Name = "lblProduct7";
             this.lblProduct7.Size = new System.Drawing.Size(72, 18);
@@ -327,6 +376,23 @@
             this.btnPay.Text = "PAY";
             this.btnPay.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(-23, -46);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 27;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(523, 433);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "label3";
+            // 
             // frmMachine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -334,6 +400,8 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources._2C35512F_B31F_4297_9682_9EAC9B4A9DBF;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(738, 623);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnPay);
             this.Controls.Add(this.edtAmount);
             this.Controls.Add(this.label2);
@@ -375,6 +443,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,6 +478,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown edtAmount;
         private System.Windows.Forms.Button btnPay;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
     }
 }
 

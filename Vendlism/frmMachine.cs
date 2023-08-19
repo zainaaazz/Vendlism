@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
 
+
 namespace Vendlism
 {
     public partial class frmMachine : Form
@@ -22,11 +23,14 @@ namespace Vendlism
 
         public string connectionString = @"Data Source=LAPTOP-7C5EDQSL\SQLEXPRESS;Initial Catalog=Vendilism;Integrated Security=True; Connect Timeout=30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+        public int price;
 
         public frmMachine()
         {
             InitializeComponent();
         }
+
+
 
         private void frmMachine_Load(object sender, EventArgs e)
         {
@@ -240,6 +244,7 @@ namespace Vendlism
             {
                 if ((reader.GetValue(1)).ToString() == cmbProduct.Text)
                 {
+                    price = int.Parse(reader.GetValue(3).ToString());
                     lblPrice.Text = cmbProduct.Text + ": R" + (reader.GetValue(3)).ToString();
                 }
                 
@@ -247,6 +252,218 @@ namespace Vendlism
             }
             conn.Close();
 
+        }
+
+        public void backIMGEnter(int i)
+        {
+            string picName = "imgProduct" + i.ToString();
+            PictureBox pic = Controls.Find(picName, true).FirstOrDefault() as PictureBox;
+            string labelName = "lblProduct" + i.ToString();
+            Label label = Controls.Find(labelName, true).FirstOrDefault() as Label;
+
+            if (pic != null)
+            {
+               pic.BackColor = Color.White;
+               label.BackColor = Color.White;
+               label.ForeColor = Color.Black;
+            }
+            else
+            {
+                // Handle the case where the label with the specified name is not found
+                // You can choose to throw an exception, display an error message, or take any other appropriate action.
+                // For this example, we'll simply print a message to the console.
+
+                MessageBox.Show("Label " + picName + " not found.");
+            }
+        }
+
+        public void backIMGLeave(int i)
+        {
+            string picName = "imgProduct" + i.ToString();
+            PictureBox pic = Controls.Find(picName, true).FirstOrDefault() as PictureBox;
+            string labelName = "lblProduct" + i.ToString();
+            Label label = Controls.Find(labelName, true).FirstOrDefault() as Label;
+
+            if (pic != null)
+            {
+                pic.BackColor = Color.Transparent;
+                label.BackColor = Color.Transparent;
+                label.ForeColor = Color.White;
+            }
+            else
+            {
+                // Handle the case where the label with the specified name is not found
+                // You can choose to throw an exception, display an error message, or take any other appropriate action.
+                // For this example, we'll simply print a message to the console.
+
+                MessageBox.Show("Label " + picName + " not found.");
+            }
+        }
+
+
+
+        private void imgProduct1_MouseEnter(object sender, EventArgs e)
+        {
+            backIMGEnter(1);
+        }
+
+        private void imgProduct1_MouseLeave(object sender, EventArgs e)
+        {
+            backIMGLeave(1);
+        }
+
+        private void imgProduct2_MouseEnter(object sender, EventArgs e)
+        {
+            backIMGEnter(2);
+        }
+
+        private void imgProduct2_MouseLeave(object sender, EventArgs e)
+        {
+            backIMGLeave(2);
+        }
+
+        private void imgProduct7_MouseLeave(object sender, EventArgs e)
+        {
+            backIMGLeave(7);
+        }
+
+        private void imgProduct7_MouseEnter(object sender, EventArgs e)
+        {
+            backIMGEnter(7);
+        }
+
+        private void imgProduct3_MouseEnter(object sender, EventArgs e)
+        {
+            backIMGEnter(3);
+        }
+
+        private void imgProduct3_MouseLeave(object sender, EventArgs e)
+        {
+            backIMGLeave(3);
+        }
+
+        private void imgProduct4_MouseEnter(object sender, EventArgs e)
+        {
+            backIMGEnter(4);
+        }
+
+        private void imgProduct4_MouseLeave(object sender, EventArgs e)
+        {
+            backIMGLeave(4);
+        }
+
+        private void imgProduct5_MouseEnter(object sender, EventArgs e)
+        {
+            backIMGEnter(5);
+        }
+
+        private void imgProduct5_MouseHover(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void imgProduct5_MouseLeave(object sender, EventArgs e)
+        {
+            backIMGLeave(5);
+        }
+
+        private void imgProduct6_MouseEnter(object sender, EventArgs e)
+        {
+            backIMGEnter(6);
+        }
+
+        private void imgProduct6_MouseLeave(object sender, EventArgs e)
+        {
+            backIMGLeave(6);
+        }
+
+        private void imgProduct8_MouseEnter(object sender, EventArgs e)
+        {
+            backIMGEnter(8);
+        }
+
+        private void imgProduct8_MouseLeave(object sender, EventArgs e)
+        {
+            backIMGLeave(8);
+        }
+
+        private void imgProduct9_MouseEnter(object sender, EventArgs e)
+        {
+            backIMGEnter(9);
+        }
+
+        private void imgProduct9_MouseLeave(object sender, EventArgs e)
+        {
+            backIMGLeave(9);
+        }
+
+
+        public void clickIMG(int i)
+        {
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            string sql = $"SELECT * FROM tblProducts WHERE Product_ID = " + i;
+            command = new SqlCommand(sql, conn);
+            reader = command.ExecuteReader();
+
+
+
+            while (reader.Read())
+            {
+                
+                    price = int.Parse(reader.GetValue(3).ToString());
+                    label3.Text = reader.GetString(1) + ": R" + (reader.GetValue(3)).ToString();
+
+                
+            }
+            conn.Close();
+        }
+
+        private void imgProduct1_Click(object sender, EventArgs e)
+        {
+            clickIMG(1);
+        }
+
+        private void imgProduct2_Click(object sender, EventArgs e)
+        {
+            clickIMG(2);
+        }
+
+        private void imgProduct3_Click(object sender, EventArgs e)
+        {
+            clickIMG(3);
+        }
+
+        private void imgProduct4_Click(object sender, EventArgs e)
+        {
+            clickIMG(4);
+        }
+
+        private void imgProduct5_Click(object sender, EventArgs e)
+        {
+            clickIMG(5);
+        }
+
+        private void imgProduct6_Click(object sender, EventArgs e)
+        {
+            clickIMG(6);
+        }
+
+        private void imgProduct7_Click(object sender, EventArgs e)
+        {
+            clickIMG(7);
+        }
+
+        private void imgProduct8_Click(object sender, EventArgs e)
+        {
+            clickIMG(8);
+        }
+
+        private void imgProduct9_Click(object sender, EventArgs e)
+        {
+            clickIMG(9);
         }
     }
 }
