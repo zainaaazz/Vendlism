@@ -112,6 +112,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\icons8-help-50.png" />
+    <None Include="Resources\help.jpg" />
+    <None Include="Resources\RoundRect.png" />
+    <None Include="Resources\BACKGROUND3.0.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

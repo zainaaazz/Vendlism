@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Data.SqlClient;
 
-
 namespace Vendlism
 {
     public partial class frmMachine : Form
@@ -21,6 +20,7 @@ namespace Vendlism
         SqlDataAdapter adapter;
         SqlDataReader reader;
 
+       
         public string connectionString = @"Data Source=LAPTOP-7C5EDQSL\SQLEXPRESS;Initial Catalog=Vendilism;Integrated Security=True; Connect Timeout=30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public int price;
@@ -34,6 +34,10 @@ namespace Vendlism
 
         private void frmMachine_Load(object sender, EventArgs e)
         {
+          
+            btnAdmin.BackColor = ColorTranslator.FromHtml("#99D9EA");
+            btnPay.BackColor = ColorTranslator.FromHtml("#99D9EA");
+
             try
             {
                 
@@ -66,9 +70,11 @@ namespace Vendlism
 
                     while (reader.Read())
                     {
-                        name = (reader.GetValue(1)).ToString();
+                        name = (reader.GetValue(1)).ToString() + ": R"+ (reader.GetValue(3)).ToString();
                     }
                     conn.Close();
+
+
 
                     label.Text = name;
                 }
@@ -169,8 +175,6 @@ namespace Vendlism
                     conn.Close();
                 }
             }
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -209,8 +213,6 @@ namespace Vendlism
             conn.Close();
 
             return imageData;
-
-           
         }
 
         // Method to convert a byte array to an Image object
@@ -245,7 +247,7 @@ namespace Vendlism
                 if ((reader.GetValue(1)).ToString() == cmbProduct.Text)
                 {
                     price = int.Parse(reader.GetValue(3).ToString());
-                    lblPrice.Text = cmbProduct.Text + ": R" + (reader.GetValue(3)).ToString();
+                    lblPrice.Text = "Selected Product:\n" + cmbProduct.Text + ": R" + (reader.GetValue(3)).ToString();
                 }
                 
                
@@ -263,9 +265,11 @@ namespace Vendlism
 
             if (pic != null)
             {
-               pic.BackColor = Color.White;
-               label.BackColor = Color.White;
-               label.ForeColor = Color.Black;
+               pic.BackColor = ColorTranslator.FromHtml("#4c4952");
+               
+                label.BackColor = ColorTranslator.FromHtml("#4c4952");
+                label.ForeColor = Color.White;
+                label.Visible = true;
             }
             else
             {
@@ -287,8 +291,10 @@ namespace Vendlism
             if (pic != null)
             {
                 pic.BackColor = Color.Transparent;
+             
                 label.BackColor = Color.Transparent;
-                label.ForeColor = Color.White;
+                label.ForeColor = Color.Black;
+                label.Visible = false;
             }
             else
             {
@@ -412,13 +418,12 @@ namespace Vendlism
 
             while (reader.Read())
             {
-                
                     price = int.Parse(reader.GetValue(3).ToString());
-                    label3.Text = reader.GetString(1) + ": R" + (reader.GetValue(3)).ToString();
-
-                
+                    lblPrice.Text = "Selected Product:\n"+ reader.GetString(1) + ": R" + (reader.GetValue(3)).ToString();
             }
             conn.Close();
+
+
         }
 
         private void imgProduct1_Click(object sender, EventArgs e)
@@ -464,6 +469,22 @@ namespace Vendlism
         private void imgProduct9_Click(object sender, EventArgs e)
         {
             clickIMG(9);
+        }
+
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+           // int amount = edtAmount.Value;
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("HELP:\n\n\nSTEP 1: Select a product you would like to purchase by either clicking on the product itself or selecting one from the combobox.\n\nSTEP 2: Enter a sufficient amount you would like to pay.\n\nSTEP 3: Click the 'PAY' button after entering an amount.\n\nSTEP 4: Collect your product from the dispenser.\n\nSTEP 5: Collect your change (if applicable).");
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblProduct1 = new System.Windows.Forms.Label();
             this.imgProduct1 = new System.Windows.Forms.PictureBox();
             this.btnAdmin = new System.Windows.Forms.Button();
@@ -56,7 +57,9 @@
             this.edtAmount = new System.Windows.Forms.NumericUpDown();
             this.btnPay = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct3)).BeginInit();
@@ -68,6 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtAmount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // lblProduct1
@@ -75,20 +80,21 @@
             this.lblProduct1.AutoSize = true;
             this.lblProduct1.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct1.ForeColor = System.Drawing.Color.White;
-            this.lblProduct1.Location = new System.Drawing.Point(130, 229);
+            this.lblProduct1.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct1.Location = new System.Drawing.Point(113, 176);
             this.lblProduct1.Name = "lblProduct1";
             this.lblProduct1.Size = new System.Drawing.Size(72, 18);
             this.lblProduct1.TabIndex = 0;
             this.lblProduct1.Text = "Product 1";
+            this.lblProduct1.Visible = false;
             // 
             // imgProduct1
             // 
             this.imgProduct1.BackColor = System.Drawing.Color.Transparent;
             this.imgProduct1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imgProduct1.Location = new System.Drawing.Point(133, 164);
+            this.imgProduct1.Location = new System.Drawing.Point(116, 65);
             this.imgProduct1.Name = "imgProduct1";
-            this.imgProduct1.Size = new System.Drawing.Size(73, 62);
+            this.imgProduct1.Size = new System.Drawing.Size(111, 108);
             this.imgProduct1.TabIndex = 1;
             this.imgProduct1.TabStop = false;
             this.imgProduct1.Click += new System.EventHandler(this.imgProduct1_Click);
@@ -97,21 +103,22 @@
             // 
             // btnAdmin
             // 
-            this.btnAdmin.Location = new System.Drawing.Point(523, 140);
+            this.btnAdmin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnAdmin.Location = new System.Drawing.Point(787, 142);
             this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(121, 31);
+            this.btnAdmin.Size = new System.Drawing.Size(237, 41);
             this.btnAdmin.TabIndex = 2;
             this.btnAdmin.Text = "Admin Login";
-            this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.UseVisualStyleBackColor = false;
             // 
             // imgProduct2
             // 
             this.imgProduct2.BackColor = System.Drawing.Color.Transparent;
             this.imgProduct2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imgProduct2.Image = global::Vendlism.Properties.Resources.hookah_flavour;
-            this.imgProduct2.Location = new System.Drawing.Point(258, 164);
+            this.imgProduct2.Location = new System.Drawing.Point(329, 65);
             this.imgProduct2.Name = "imgProduct2";
-            this.imgProduct2.Size = new System.Drawing.Size(73, 62);
+            this.imgProduct2.Size = new System.Drawing.Size(107, 108);
             this.imgProduct2.TabIndex = 4;
             this.imgProduct2.TabStop = false;
             this.imgProduct2.Click += new System.EventHandler(this.imgProduct2_Click);
@@ -123,20 +130,21 @@
             this.lblProduct2.AutoSize = true;
             this.lblProduct2.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct2.ForeColor = System.Drawing.Color.White;
-            this.lblProduct2.Location = new System.Drawing.Point(255, 229);
+            this.lblProduct2.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct2.Location = new System.Drawing.Point(326, 176);
             this.lblProduct2.Name = "lblProduct2";
             this.lblProduct2.Size = new System.Drawing.Size(72, 18);
             this.lblProduct2.TabIndex = 3;
             this.lblProduct2.Text = "Product 2";
+            this.lblProduct2.Visible = false;
             // 
             // imgProduct3
             // 
             this.imgProduct3.BackColor = System.Drawing.Color.Transparent;
             this.imgProduct3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imgProduct3.Location = new System.Drawing.Point(384, 164);
+            this.imgProduct3.Location = new System.Drawing.Point(543, 65);
             this.imgProduct3.Name = "imgProduct3";
-            this.imgProduct3.Size = new System.Drawing.Size(73, 62);
+            this.imgProduct3.Size = new System.Drawing.Size(107, 108);
             this.imgProduct3.TabIndex = 6;
             this.imgProduct3.TabStop = false;
             this.imgProduct3.Click += new System.EventHandler(this.imgProduct3_Click);
@@ -148,20 +156,21 @@
             this.lblProduct3.AutoSize = true;
             this.lblProduct3.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct3.ForeColor = System.Drawing.Color.White;
-            this.lblProduct3.Location = new System.Drawing.Point(381, 229);
+            this.lblProduct3.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct3.Location = new System.Drawing.Point(540, 176);
             this.lblProduct3.Name = "lblProduct3";
             this.lblProduct3.Size = new System.Drawing.Size(72, 18);
             this.lblProduct3.TabIndex = 5;
             this.lblProduct3.Text = "Product 3";
+            this.lblProduct3.Visible = false;
             // 
             // imgProduct4
             // 
             this.imgProduct4.BackColor = System.Drawing.Color.Transparent;
             this.imgProduct4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imgProduct4.Location = new System.Drawing.Point(133, 260);
+            this.imgProduct4.Location = new System.Drawing.Point(116, 226);
             this.imgProduct4.Name = "imgProduct4";
-            this.imgProduct4.Size = new System.Drawing.Size(73, 62);
+            this.imgProduct4.Size = new System.Drawing.Size(111, 105);
             this.imgProduct4.TabIndex = 8;
             this.imgProduct4.TabStop = false;
             this.imgProduct4.Click += new System.EventHandler(this.imgProduct4_Click);
@@ -173,20 +182,21 @@
             this.lblProduct4.AutoSize = true;
             this.lblProduct4.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct4.ForeColor = System.Drawing.Color.White;
-            this.lblProduct4.Location = new System.Drawing.Point(130, 334);
+            this.lblProduct4.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct4.Location = new System.Drawing.Point(113, 334);
             this.lblProduct4.Name = "lblProduct4";
             this.lblProduct4.Size = new System.Drawing.Size(72, 18);
             this.lblProduct4.TabIndex = 7;
             this.lblProduct4.Text = "Product 4";
+            this.lblProduct4.Visible = false;
             // 
             // imgProduct5
             // 
             this.imgProduct5.BackColor = System.Drawing.Color.Transparent;
             this.imgProduct5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imgProduct5.Location = new System.Drawing.Point(258, 260);
+            this.imgProduct5.Location = new System.Drawing.Point(329, 226);
             this.imgProduct5.Name = "imgProduct5";
-            this.imgProduct5.Size = new System.Drawing.Size(73, 62);
+            this.imgProduct5.Size = new System.Drawing.Size(107, 105);
             this.imgProduct5.TabIndex = 10;
             this.imgProduct5.TabStop = false;
             this.imgProduct5.Click += new System.EventHandler(this.imgProduct5_Click);
@@ -199,20 +209,21 @@
             this.lblProduct5.AutoSize = true;
             this.lblProduct5.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct5.ForeColor = System.Drawing.Color.White;
-            this.lblProduct5.Location = new System.Drawing.Point(259, 334);
+            this.lblProduct5.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct5.Location = new System.Drawing.Point(326, 334);
             this.lblProduct5.Name = "lblProduct5";
             this.lblProduct5.Size = new System.Drawing.Size(72, 18);
             this.lblProduct5.TabIndex = 9;
             this.lblProduct5.Text = "Product 5";
+            this.lblProduct5.Visible = false;
             // 
             // imgProduct6
             // 
             this.imgProduct6.BackColor = System.Drawing.Color.Transparent;
             this.imgProduct6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imgProduct6.Location = new System.Drawing.Point(384, 260);
+            this.imgProduct6.Location = new System.Drawing.Point(543, 226);
             this.imgProduct6.Name = "imgProduct6";
-            this.imgProduct6.Size = new System.Drawing.Size(73, 62);
+            this.imgProduct6.Size = new System.Drawing.Size(107, 105);
             this.imgProduct6.TabIndex = 12;
             this.imgProduct6.TabStop = false;
             this.imgProduct6.Click += new System.EventHandler(this.imgProduct6_Click);
@@ -224,20 +235,21 @@
             this.lblProduct6.AutoSize = true;
             this.lblProduct6.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct6.ForeColor = System.Drawing.Color.White;
-            this.lblProduct6.Location = new System.Drawing.Point(381, 334);
+            this.lblProduct6.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct6.Location = new System.Drawing.Point(540, 334);
             this.lblProduct6.Name = "lblProduct6";
             this.lblProduct6.Size = new System.Drawing.Size(72, 18);
             this.lblProduct6.TabIndex = 11;
             this.lblProduct6.Text = "Product 6";
+            this.lblProduct6.Visible = false;
             // 
             // imgProduct8
             // 
             this.imgProduct8.BackColor = System.Drawing.Color.Transparent;
             this.imgProduct8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imgProduct8.Location = new System.Drawing.Point(258, 364);
+            this.imgProduct8.Location = new System.Drawing.Point(329, 395);
             this.imgProduct8.Name = "imgProduct8";
-            this.imgProduct8.Size = new System.Drawing.Size(73, 62);
+            this.imgProduct8.Size = new System.Drawing.Size(107, 100);
             this.imgProduct8.TabIndex = 14;
             this.imgProduct8.TabStop = false;
             this.imgProduct8.Click += new System.EventHandler(this.imgProduct8_Click);
@@ -249,20 +261,21 @@
             this.lblProduct8.AutoSize = true;
             this.lblProduct8.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct8.ForeColor = System.Drawing.Color.White;
-            this.lblProduct8.Location = new System.Drawing.Point(255, 429);
+            this.lblProduct8.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct8.Location = new System.Drawing.Point(326, 498);
             this.lblProduct8.Name = "lblProduct8";
             this.lblProduct8.Size = new System.Drawing.Size(72, 18);
             this.lblProduct8.TabIndex = 13;
             this.lblProduct8.Text = "Product 8";
+            this.lblProduct8.Visible = false;
             // 
             // imgProduct9
             // 
             this.imgProduct9.BackColor = System.Drawing.Color.Transparent;
             this.imgProduct9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imgProduct9.Location = new System.Drawing.Point(384, 364);
+            this.imgProduct9.Location = new System.Drawing.Point(543, 395);
             this.imgProduct9.Name = "imgProduct9";
-            this.imgProduct9.Size = new System.Drawing.Size(73, 62);
+            this.imgProduct9.Size = new System.Drawing.Size(107, 100);
             this.imgProduct9.TabIndex = 16;
             this.imgProduct9.TabStop = false;
             this.imgProduct9.Click += new System.EventHandler(this.imgProduct9_Click);
@@ -274,21 +287,22 @@
             this.lblProduct9.AutoSize = true;
             this.lblProduct9.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct9.ForeColor = System.Drawing.Color.White;
-            this.lblProduct9.Location = new System.Drawing.Point(381, 429);
+            this.lblProduct9.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct9.Location = new System.Drawing.Point(540, 498);
             this.lblProduct9.Name = "lblProduct9";
             this.lblProduct9.Size = new System.Drawing.Size(72, 18);
             this.lblProduct9.TabIndex = 15;
             this.lblProduct9.Text = "Product 9";
+            this.lblProduct9.Visible = false;
             this.lblProduct9.Click += new System.EventHandler(this.lblProduct9_Click);
             // 
             // imgProduct7
             // 
             this.imgProduct7.BackColor = System.Drawing.Color.Transparent;
             this.imgProduct7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.imgProduct7.Location = new System.Drawing.Point(133, 364);
+            this.imgProduct7.Location = new System.Drawing.Point(116, 395);
             this.imgProduct7.Name = "imgProduct7";
-            this.imgProduct7.Size = new System.Drawing.Size(73, 62);
+            this.imgProduct7.Size = new System.Drawing.Size(111, 100);
             this.imgProduct7.TabIndex = 18;
             this.imgProduct7.TabStop = false;
             this.imgProduct7.Click += new System.EventHandler(this.imgProduct7_Click);
@@ -300,16 +314,17 @@
             this.lblProduct7.AutoSize = true;
             this.lblProduct7.BackColor = System.Drawing.Color.Transparent;
             this.lblProduct7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProduct7.ForeColor = System.Drawing.Color.White;
-            this.lblProduct7.Location = new System.Drawing.Point(130, 429);
+            this.lblProduct7.ForeColor = System.Drawing.Color.Black;
+            this.lblProduct7.Location = new System.Drawing.Point(113, 498);
             this.lblProduct7.Name = "lblProduct7";
             this.lblProduct7.Size = new System.Drawing.Size(72, 18);
             this.lblProduct7.TabIndex = 17;
             this.lblProduct7.Text = "Product 7";
+            this.lblProduct7.Visible = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 511);
+            this.button1.Location = new System.Drawing.Point(794, 555);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 45);
             this.button1.TabIndex = 19;
@@ -319,62 +334,76 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 485);
+            this.textBox1.Location = new System.Drawing.Point(794, 529);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 20;
             // 
             // cmbProduct
             // 
+            this.cmbProduct.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmbProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProduct.FormattingEnabled = true;
-            this.cmbProduct.Location = new System.Drawing.Point(523, 225);
+            this.cmbProduct.Location = new System.Drawing.Point(805, 239);
             this.cmbProduct.Name = "cmbProduct";
-            this.cmbProduct.Size = new System.Drawing.Size(121, 21);
+            this.cmbProduct.Size = new System.Drawing.Size(121, 24);
             this.cmbProduct.TabIndex = 21;
             this.cmbProduct.SelectedIndexChanged += new System.EventHandler(this.cmbProduct_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(523, 206);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(783, 205);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 13);
+            this.label1.Size = new System.Drawing.Size(170, 20);
             this.label1.TabIndex = 22;
-            this.label1.Text = "Choose Product Name:";
+            this.label1.Text = "Choose product name:";
             // 
             // lblPrice
             // 
             this.lblPrice.AutoSize = true;
-            this.lblPrice.Location = new System.Drawing.Point(523, 260);
+            this.lblPrice.BackColor = System.Drawing.Color.Transparent;
+            this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrice.ForeColor = System.Drawing.Color.White;
+            this.lblPrice.Location = new System.Drawing.Point(783, 288);
             this.lblPrice.Name = "lblPrice";
-            this.lblPrice.Size = new System.Drawing.Size(10, 13);
+            this.lblPrice.Size = new System.Drawing.Size(13, 20);
             this.lblPrice.TabIndex = 23;
             this.lblPrice.Text = ".";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(520, 309);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(783, 354);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(120, 13);
+            this.label2.Size = new System.Drawing.Size(179, 20);
             this.label2.TabIndex = 24;
             this.label2.Text = "Enter an amount to pay:";
             // 
             // edtAmount
             // 
-            this.edtAmount.Location = new System.Drawing.Point(520, 334);
+            this.edtAmount.Location = new System.Drawing.Point(787, 383);
             this.edtAmount.Name = "edtAmount";
-            this.edtAmount.Size = new System.Drawing.Size(120, 20);
+            this.edtAmount.Size = new System.Drawing.Size(237, 20);
             this.edtAmount.TabIndex = 25;
             // 
             // btnPay
             // 
-            this.btnPay.Location = new System.Drawing.Point(520, 364);
+            this.btnPay.FlatAppearance.BorderSize = 0;
+            this.btnPay.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnPay.Location = new System.Drawing.Point(787, 414);
             this.btnPay.Name = "btnPay";
-            this.btnPay.Size = new System.Drawing.Size(120, 23);
+            this.btnPay.Size = new System.Drawing.Size(237, 40);
             this.btnPay.TabIndex = 26;
             this.btnPay.Text = "PAY";
             this.btnPay.UseVisualStyleBackColor = true;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // pictureBox1
             // 
@@ -384,23 +413,39 @@
             this.pictureBox1.TabIndex = 27;
             this.pictureBox1.TabStop = false;
             // 
-            // label3
+            // pictureBox2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(523, 433);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "label3";
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.BackgroundImage = global::Vendlism.Properties.Resources.RoundRect;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(787, 230);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(155, 42);
+            this.pictureBox2.TabIndex = 29;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.BackgroundImage = global::Vendlism.Properties.Resources.icons8_help_50;
+            this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox3.Location = new System.Drawing.Point(975, 226);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(49, 46);
+            this.pictureBox3.TabIndex = 30;
+            this.pictureBox3.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox3, "Need Help?");
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // frmMachine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Vendlism.Properties.Resources._2C35512F_B31F_4297_9682_9EAC9B4A9DBF;
+            this.BackgroundImage = global::Vendlism.Properties.Resources.BACKGROUND3_0;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(738, 623);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(1062, 688);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnPay);
             this.Controls.Add(this.edtAmount);
@@ -429,6 +474,8 @@
             this.Controls.Add(this.btnAdmin);
             this.Controls.Add(this.imgProduct1);
             this.Controls.Add(this.lblProduct1);
+            this.Controls.Add(this.pictureBox2);
+            this.DoubleBuffered = true;
             this.Name = "frmMachine";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VENDILISM";
@@ -444,6 +491,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtAmount)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -479,7 +528,9 @@
         private System.Windows.Forms.NumericUpDown edtAmount;
         private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

@@ -73,6 +73,16 @@ namespace Vendlism.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BACKGROUND3_0 {
+            get {
+                object obj = ResourceManager.GetObject("BACKGROUND3.0", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hd_cold_coca_cola_classic_can_png_31625599176oikhh8d9si {
             get {
                 object obj = ResourceManager.GetObject("hd-cold-coca-cola-classic-can-png-31625599176oikhh8d9si", resourceCulture);
@@ -83,9 +93,39 @@ namespace Vendlism.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap help {
+            get {
+                object obj = ResourceManager.GetObject("help", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hookah_flavour {
             get {
                 object obj = ResourceManager.GetObject("hookah flavour", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_help_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-help-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap RoundRect {
+            get {
+                object obj = ResourceManager.GetObject("RoundRect", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
