@@ -56,7 +56,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.edtAmount = new System.Windows.Forms.NumericUpDown();
             this.btnPay = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -70,7 +69,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtAmount)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
@@ -111,6 +109,7 @@
             this.btnAdmin.TabIndex = 2;
             this.btnAdmin.Text = "Admin Login";
             this.btnAdmin.UseVisualStyleBackColor = false;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // imgProduct2
             // 
@@ -405,14 +404,6 @@
             this.btnPay.UseVisualStyleBackColor = true;
             this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(-23, -46);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 27;
-            this.pictureBox1.TabStop = false;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
@@ -442,11 +433,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Vendlism.Properties.Resources.BACKGROUND3_0;
+            this.BackgroundImage = global::Vendlism.Properties.Resources.BACKGROUND31;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1062, 688);
             this.Controls.Add(this.pictureBox3);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnPay);
             this.Controls.Add(this.edtAmount);
             this.Controls.Add(this.label2);
@@ -490,7 +480,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtAmount)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
@@ -527,7 +516,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown edtAmount;
         private System.Windows.Forms.Button btnPay;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ToolTip toolTip1;

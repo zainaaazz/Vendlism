@@ -61,7 +61,7 @@ namespace Vendlism
                     {
                         conn.Open();
                     }
-                    string sql = $"SELECT * FROM tblProducts WHERE Product_ID = " + i;
+                    string sql = $"SELECT * FROM tblProduct WHERE Product_ID = " + i;
                     command = new SqlCommand(sql, conn);
                     reader = command.ExecuteReader();
 
@@ -118,13 +118,13 @@ namespace Vendlism
             {
                 conn.Open();
             }
-            string sql2 = $"SELECT Product_Name FROM tblProducts";
+            string sql2 = $"SELECT Product_Name FROM tblProduct";
             adapter = new SqlDataAdapter(sql2, conn);
             DataSet ds2 = new DataSet();
-            adapter.Fill(ds2, "tblProducts");
+            adapter.Fill(ds2, "tblProduct");
             cmbProduct.DisplayMember = "Product_Name"; //THE COLUMN NAME 
             cmbProduct.ValueMember = "Product_Name";
-            cmbProduct.DataSource = ds2.Tables["tblProducts"];
+            cmbProduct.DataSource = ds2.Tables["tblProduct"];
             conn.Close();
 
 
@@ -145,7 +145,7 @@ namespace Vendlism
                 // Retrieve the selected image file path
                 string imagePath = openFileDialog.FileName;
 
-                // Insert the image into the "image" field in tblProducts
+                // Insert the image into the "image" field in tblProduct
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     if (conn.State == ConnectionState.Closed)
@@ -154,14 +154,14 @@ namespace Vendlism
                     }
 
                     // Check if the product exists in the database
-                    string checkProductQuery = $"SELECT COUNT(*) FROM tblProducts WHERE Product_ID = '{productID}'";
+                    string checkProductQuery = $"SELECT COUNT(*) FROM tblProduct WHERE Product_ID = '{productID}'";
                     SqlCommand checkProductCommand = new SqlCommand(checkProductQuery, conn);
                     int productCount = Convert.ToInt32(checkProductCommand.ExecuteScalar());
 
                     if (productCount > 0)
                     {
                         // Update the "image" field for the specified product
-                        string updateQuery = $"UPDATE tblProducts SET Product_Image = @image WHERE Product_ID = '{productID}'";
+                        string updateQuery = $"UPDATE tblProduct SET Product_Image = @image WHERE Product_ID = '{productID}'";
                         SqlCommand updateCommand = new SqlCommand(updateQuery, conn);
                         updateCommand.Parameters.AddWithValue("@image", File.ReadAllBytes(imagePath));
                         updateCommand.ExecuteNonQuery();
@@ -192,7 +192,7 @@ namespace Vendlism
                 conn.Open();
             }
             // Create a SqlCommand to fetch the image data from the database
-            using (SqlCommand command = new SqlCommand("SELECT Product_Image FROM tblProducts WHERE Product_ID = @ProductId", conn))
+            using (SqlCommand command = new SqlCommand("SELECT Product_Image FROM tblProduct WHERE Product_ID = @ProductId", conn))
             {
                 command.Parameters.AddWithValue("@ProductId", productId);
 
@@ -236,7 +236,7 @@ namespace Vendlism
                 conn.Open();
             }
 
-            string sql = $"SELECT * FROM tblProducts";
+            string sql = $"SELECT * FROM tblProduct";
             command = new SqlCommand(sql, conn);
             reader = command.ExecuteReader();
 
@@ -410,7 +410,7 @@ namespace Vendlism
             {
                 conn.Open();
             }
-            string sql = $"SELECT * FROM tblProducts WHERE Product_ID = " + i;
+            string sql = $"SELECT * FROM tblProduct WHERE Product_ID = " + i;
             command = new SqlCommand(sql, conn);
             reader = command.ExecuteReader();
 
@@ -485,6 +485,13 @@ namespace Vendlism
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             MessageBox.Show("HELP:\n\n\nSTEP 1: Select a product you would like to purchase by either clicking on the product itself or selecting one from the combobox.\n\nSTEP 2: Enter a sufficient amount you would like to pay.\n\nSTEP 3: Click the 'PAY' button after entering an amount.\n\nSTEP 4: Collect your product from the dispenser.\n\nSTEP 5: Collect your change (if applicable).");
+        }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            frmUsers users = new frmUsers();
+            this.Hide();
+            users.Show();
         }
     }
 }
