@@ -57,24 +57,12 @@ namespace Vendlism
             grpDelete.Location = point;
             grpUpdate.Location = point;
 
-            //load combobox for delete groupbox
+            
 
-         //   loadCMB("cmbDelete");
-          //  loadCMB("cmbUpdate");
+            loadCMB("cmbDelete");
+            loadCMB("cmbUpdate");
 
-            if (conn.State == ConnectionState.Closed)
-            {
-                conn.Open();
-            }
-            string sql = $"SELECT Username FROM tblUser";
-            adapter = new SqlDataAdapter(sql, conn);
-            DataSet ds = new DataSet();
-            adapter.Fill(ds, "tblUser");
-            cmbDelete.DisplayMember = "Username";
-            cmbDelete.ValueMember = "Username";
-            cmbDelete.DataSource = ds.Tables["tblUser"];
-            conn.Close();
-            MessageBox.Show("Successfully added to cmbDelete");
+           
 
 
         }
@@ -83,7 +71,7 @@ namespace Vendlism
         {
             ComboBox cmb = Controls.Find(cmbName, true).FirstOrDefault() as ComboBox;
             if (cmb != null)
-            { /*
+            { 
                 if (conn.State == ConnectionState.Closed)
                 {
                     conn.Open();
@@ -91,13 +79,13 @@ namespace Vendlism
                 string sql = $"SELECT Username FROM tblUser";
                 adapter = new SqlDataAdapter(sql, conn);
                 DataSet ds = new DataSet();
-                adapter.Fill(ds, "Username");
+                adapter.Fill(ds, "tblUser");
                 cmb.DisplayMember = "Username";
-                cmb.ValueMember = "tblUser";
+                cmb.ValueMember = "Username";
                 cmb.DataSource = ds.Tables["tblUser"];
                 conn.Close();
-                MessageBox.Show("Successfully added to "+ cmbName);
-                */
+                cmb.SelectedIndex = -1;
+                
             }
             else
             {
@@ -463,6 +451,29 @@ namespace Vendlism
             grpAdd.Visible = false;
             grpSearch.Visible = false;
             grpDelete.Visible = false;
+        }
+
+        private void cmbUpdate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            string sql = $"SELECT * FROM tblUser";
+            command = new SqlCommand(sql, conn);
+            reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                if (reader.GetValue(1).ToString() == cmbUpdate.Text)
+                {
+                 lblPK.Text = reader.GetValue(0).ToString();
+                }
+                
+               
+            }
+            conn.Close();
+
         }
     }
 }

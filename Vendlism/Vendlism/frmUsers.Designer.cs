@@ -59,12 +59,23 @@
             this.label8 = new System.Windows.Forms.Label();
             this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
             this.grpDelete = new System.Windows.Forms.GroupBox();
+            this.cmbDelete = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.cmbDelete = new System.Windows.Forms.ComboBox();
             this.grpUpdate = new System.Windows.Forms.GroupBox();
             this.cmbUpdate = new System.Windows.Forms.ComboBox();
+            this.imgUpdateOff = new System.Windows.Forms.PictureBox();
+            this.imgUpdateON = new System.Windows.Forms.PictureBox();
+            this.txtUpdatePassword = new System.Windows.Forms.TextBox();
+            this.rbUpdateAdmin2 = new System.Windows.Forms.RadioButton();
+            this.rbUpdateAdmin = new System.Windows.Forms.RadioButton();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.lblPK = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.grpAdd.SuspendLayout();
@@ -76,6 +87,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).BeginInit();
             this.grpDelete.SuspendLayout();
             this.grpUpdate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUpdateOff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUpdateON)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -167,6 +180,7 @@
             // 
             // grpAdd
             // 
+            this.grpAdd.Controls.Add(this.grpUpdate);
             this.grpAdd.Controls.Add(this.imgOff2);
             this.grpAdd.Controls.Add(this.imgOn2);
             this.grpAdd.Controls.Add(this.imgOff);
@@ -434,6 +448,14 @@
             this.grpDelete.Text = "DELETE USER";
             this.grpDelete.Visible = false;
             // 
+            // cmbDelete
+            // 
+            this.cmbDelete.FormattingEnabled = true;
+            this.cmbDelete.Location = new System.Drawing.Point(201, 62);
+            this.cmbDelete.Name = "cmbDelete";
+            this.cmbDelete.Size = new System.Drawing.Size(163, 21);
+            this.cmbDelete.TabIndex = 8;
+            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -461,18 +483,21 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Search by Username:";
             // 
-            // cmbDelete
-            // 
-            this.cmbDelete.FormattingEnabled = true;
-            this.cmbDelete.Location = new System.Drawing.Point(201, 62);
-            this.cmbDelete.Name = "cmbDelete";
-            this.cmbDelete.Size = new System.Drawing.Size(163, 21);
-            this.cmbDelete.TabIndex = 8;
-            // 
             // grpUpdate
             // 
+            this.grpUpdate.Controls.Add(this.label5);
+            this.grpUpdate.Controls.Add(this.lblPK);
+            this.grpUpdate.Controls.Add(this.button2);
+            this.grpUpdate.Controls.Add(this.imgUpdateOff);
+            this.grpUpdate.Controls.Add(this.imgUpdateON);
+            this.grpUpdate.Controls.Add(this.txtUpdatePassword);
+            this.grpUpdate.Controls.Add(this.rbUpdateAdmin2);
+            this.grpUpdate.Controls.Add(this.rbUpdateAdmin);
+            this.grpUpdate.Controls.Add(this.label9);
+            this.grpUpdate.Controls.Add(this.label10);
+            this.grpUpdate.Controls.Add(this.label11);
             this.grpUpdate.Controls.Add(this.cmbUpdate);
-            this.grpUpdate.Location = new System.Drawing.Point(202, 263);
+            this.grpUpdate.Location = new System.Drawing.Point(120, 186);
             this.grpUpdate.Name = "grpUpdate";
             this.grpUpdate.Size = new System.Drawing.Size(751, 250);
             this.grpUpdate.TabIndex = 14;
@@ -483,10 +508,125 @@
             // cmbUpdate
             // 
             this.cmbUpdate.FormattingEnabled = true;
-            this.cmbUpdate.Location = new System.Drawing.Point(104, 33);
+            this.cmbUpdate.Location = new System.Drawing.Point(187, 51);
             this.cmbUpdate.Name = "cmbUpdate";
-            this.cmbUpdate.Size = new System.Drawing.Size(121, 21);
+            this.cmbUpdate.Size = new System.Drawing.Size(157, 21);
             this.cmbUpdate.TabIndex = 0;
+            this.cmbUpdate.SelectedIndexChanged += new System.EventHandler(this.cmbUpdate_SelectedIndexChanged);
+            // 
+            // imgUpdateOff
+            // 
+            this.imgUpdateOff.BackColor = System.Drawing.Color.Transparent;
+            this.imgUpdateOff.BackgroundImage = global::Vendlism.Properties.Resources.Toggle_off1;
+            this.imgUpdateOff.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imgUpdateOff.Location = new System.Drawing.Point(368, 91);
+            this.imgUpdateOff.Name = "imgUpdateOff";
+            this.imgUpdateOff.Size = new System.Drawing.Size(40, 22);
+            this.imgUpdateOff.TabIndex = 24;
+            this.imgUpdateOff.TabStop = false;
+            // 
+            // imgUpdateON
+            // 
+            this.imgUpdateON.BackColor = System.Drawing.Color.Transparent;
+            this.imgUpdateON.BackgroundImage = global::Vendlism.Properties.Resources.toggle_on1;
+            this.imgUpdateON.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imgUpdateON.Location = new System.Drawing.Point(368, 91);
+            this.imgUpdateON.Name = "imgUpdateON";
+            this.imgUpdateON.Size = new System.Drawing.Size(40, 22);
+            this.imgUpdateON.TabIndex = 23;
+            this.imgUpdateON.TabStop = false;
+            this.imgUpdateON.Visible = false;
+            // 
+            // txtUpdatePassword
+            // 
+            this.txtUpdatePassword.Location = new System.Drawing.Point(187, 91);
+            this.txtUpdatePassword.Name = "txtUpdatePassword";
+            this.txtUpdatePassword.PasswordChar = '*';
+            this.txtUpdatePassword.Size = new System.Drawing.Size(157, 20);
+            this.txtUpdatePassword.TabIndex = 20;
+            // 
+            // rbUpdateAdmin2
+            // 
+            this.rbUpdateAdmin2.AutoSize = true;
+            this.rbUpdateAdmin2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbUpdateAdmin2.Location = new System.Drawing.Point(187, 153);
+            this.rbUpdateAdmin2.Name = "rbUpdateAdmin2";
+            this.rbUpdateAdmin2.Size = new System.Drawing.Size(44, 21);
+            this.rbUpdateAdmin2.TabIndex = 18;
+            this.rbUpdateAdmin2.TabStop = true;
+            this.rbUpdateAdmin2.Text = "No";
+            this.rbUpdateAdmin2.UseVisualStyleBackColor = true;
+            // 
+            // rbUpdateAdmin
+            // 
+            this.rbUpdateAdmin.AutoSize = true;
+            this.rbUpdateAdmin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbUpdateAdmin.Location = new System.Drawing.Point(187, 130);
+            this.rbUpdateAdmin.Name = "rbUpdateAdmin";
+            this.rbUpdateAdmin.Size = new System.Drawing.Size(50, 21);
+            this.rbUpdateAdmin.TabIndex = 17;
+            this.rbUpdateAdmin.TabStop = true;
+            this.rbUpdateAdmin.Text = "Yes";
+            this.rbUpdateAdmin.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(32, 131);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(101, 20);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Admin rights:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(32, 91);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(82, 20);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Password:";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(32, 52);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(87, 20);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Username:";
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(31, 185);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(308, 38);
+            this.button2.TabIndex = 25;
+            this.button2.Text = "Update User";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // lblPK
+            // 
+            this.lblPK.AutoSize = true;
+            this.lblPK.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPK.Location = new System.Drawing.Point(32, 21);
+            this.lblPK.Name = "lblPK";
+            this.lblPK.Size = new System.Drawing.Size(68, 20);
+            this.lblPK.TabIndex = 27;
+            this.lblPK.Text = "User ID:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(187, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(10, 13);
+            this.label5.TabIndex = 28;
+            this.label5.Text = ".";
             // 
             // frmUsers
             // 
@@ -495,7 +635,6 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources.MaintainUsers;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1062, 688);
-            this.Controls.Add(this.grpUpdate);
             this.Controls.Add(this.grpDelete);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpAdd);
@@ -520,6 +659,9 @@
             this.grpDelete.ResumeLayout(false);
             this.grpDelete.PerformLayout();
             this.grpUpdate.ResumeLayout(false);
+            this.grpUpdate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUpdateOff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUpdateON)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -562,5 +704,16 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox grpUpdate;
         private System.Windows.Forms.ComboBox cmbUpdate;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.PictureBox imgUpdateOff;
+        private System.Windows.Forms.PictureBox imgUpdateON;
+        private System.Windows.Forms.TextBox txtUpdatePassword;
+        private System.Windows.Forms.RadioButton rbUpdateAdmin2;
+        private System.Windows.Forms.RadioButton rbUpdateAdmin;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblPK;
     }
 }
