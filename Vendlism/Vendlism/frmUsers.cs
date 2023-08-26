@@ -28,72 +28,76 @@ namespace Vendlism
 
         public void loadDB(string sql)
         {
-            conn = new SqlConnection(connectionString);
-            if (conn.State == ConnectionState.Closed)
+            try
             {
-                conn.Open();
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                command = new SqlCommand(sql, conn);
+                adapter = new SqlDataAdapter();
+                adapter.SelectCommand = command;
+                DataSet ds = new DataSet();
+                adapter.Fill(ds, "tblUser");
+                dataGridView1.DataSource = ds;
+                dataGridView1.DataMember = "tblUser";
+                conn.Close();
             }
-            
-            command = new SqlCommand(sql, conn);
-            adapter = new SqlDataAdapter();
-            adapter.SelectCommand = command;
-            DataSet ds = new DataSet();
-            adapter.Fill(ds, "tblUser");
-            dataGridView1.DataSource = ds;
-            dataGridView1.DataMember = "tblUser";
-            conn.Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
         private void frmUsers_Load(object sender, EventArgs e)
         {
-            //   btnAdd.BackColor = ColorTranslator.FromHtml("#99D9EA");
+            conn = new SqlConnection(connectionString);
 
+            //load Datagridview and comboboxes
             loadDB("SELECT * FROM tblUser");
+            loadCMB("cmbDelete");
+            loadCMB("cmbUpdate");
 
+            //Set location of all the groupboxes
             var point = new Point(277, 326);
             grpAdd.Location = point;
             grpSearch.Location = point;
             grpDelete.Location = point;
             grpUpdate.Location = point;
-
-            
-
-            loadCMB("cmbDelete");
-            loadCMB("cmbUpdate");
-
            
-
-
         }
 
         public void loadCMB(string cmbName)
         {
-            ComboBox cmb = Controls.Find(cmbName, true).FirstOrDefault() as ComboBox;
-            if (cmb != null)
-            { 
-                if (conn.State == ConnectionState.Closed)
-                {
-                    conn.Open();
-                }
-                string sql = $"SELECT Username FROM tblUser";
-                adapter = new SqlDataAdapter(sql, conn);
-                DataSet ds = new DataSet();
-                adapter.Fill(ds, "tblUser");
-                cmb.DisplayMember = "Username";
-                cmb.ValueMember = "Username";
-                cmb.DataSource = ds.Tables["tblUser"];
-                conn.Close();
-                cmb.SelectedIndex = -1;
-                
-            }
-            else
+            try
             {
-                // Handle the case where the label with the specified name is not found
-                // You can choose to throw an exception, display an error message, or take any other appropriate action.
-                // For this example, we'll simply print a message to the console.
-
-                MessageBox.Show("combobox: " + cmbName + " not found.");
+                ComboBox cmb = Controls.Find(cmbName, true).FirstOrDefault() as ComboBox;
+                if (cmb != null)
+                {
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+                    string sql = $"SELECT Username FROM tblUser";
+                    adapter = new SqlDataAdapter(sql, conn);
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds, "tblUser");
+                    cmb.DisplayMember = "Username";
+                    cmb.ValueMember = "Username";
+                    cmb.DataSource = ds.Tables["tblUser"];
+                    conn.Close();
+                    cmb.SelectedIndex = -1;
+                }
+                else
+                {
+                    // Handle the case where the component with the specified name is not found
+                    MessageBox.Show("combobox: " + cmbName + " not found.");
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -117,11 +121,6 @@ namespace Vendlism
             return new string(chars);
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAdd_Click(object sender, EventArgs e)
         {
             grpAdd.Visible = true;
@@ -138,19 +137,12 @@ namespace Vendlism
             {
                 btn.BackColor = ColorTranslator.FromHtml("#99D9EA"); 
                 btn.ForeColor = Color.Black;
-
-
             }
             else
             {
-                // Handle the case where the label with the specified name is not found
-                // You can choose to throw an exception, display an error message, or take any other appropriate action.
-                // For this example, we'll simply print a message to the console.
-
+                // Handle the case where the button with the specified name is not found
                 MessageBox.Show("button: " + btnName + " not found.");
             }
-
-
         }
 
         public void leaveHover(String btnName)
@@ -160,15 +152,10 @@ namespace Vendlism
             {
                 btn.BackColor = ColorTranslator.FromHtml("#DCDCDC");
                 btn.ForeColor = Color.Black;
-
-
             }
             else
             {
-                // Handle the case where the label with the specified name is not found
-                // You can choose to throw an exception, display an error message, or take any other appropriate action.
-                // For this example, we'll simply print a message to the console.
-
+                // Handle the case where the button with the specified name is not found
                 MessageBox.Show("button: " + btnName + " not found.");
             }
         }
@@ -203,10 +190,10 @@ namespace Vendlism
             leaveHover("btnUpdate");
         }
 
-       
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            lblDeletePK.Text = "";
+            cmbDelete.SelectedIndex = -1;
             grpAdd.Visible = false;
             grpSearch.Visible = false;
             grpDelete.Visible = true;
@@ -215,6 +202,13 @@ namespace Vendlism
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            txtUpdatePassword.Text = "";
+            lblPK.Text = "";
+            cmbUpdate.SelectedIndex = -1;
+
+            rbUpdateAdmin.Checked = false;
+            rbUpdateAdmin2.Checked = false;
+
             grpUpdate.Visible = true;
             grpAdd.Visible = false;
             grpSearch.Visible = false;
@@ -227,7 +221,6 @@ namespace Vendlism
             imgOff.Visible = false;
             imgOn.Visible = true;
             txtPassword.PasswordChar = '\0';
-
         }
 
         private void imgOn_Click(object sender, EventArgs e)
@@ -253,138 +246,182 @@ namespace Vendlism
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            string sUsername = txtUsername.Text;
-            string sPassword = txtPassword.Text;
-            string sConfirm = txtConfirm.Text;
-
-            Boolean found = false;
-
-            if (conn.State == ConnectionState.Closed)
+            try
             {
-                conn.Open();
-            }
-            string sql = $"SELECT * FROM tblUser";
-            command = new SqlCommand(sql, conn);
-            reader = command.ExecuteReader();
+                string sUsername = txtUsername.Text;
+                string sPassword = txtPassword.Text;
+                string sConfirm = txtConfirm.Text;
 
-            while (reader.Read())
-            {
-               if (sUsername == (reader.GetValue(1)).ToString())
-               {
-                    found = true;
-               }
-            }
-            conn.Close();
+                Boolean found = false;
 
-            string symbols = "!@#$%^&*";
-            Boolean symbolCheck = false;
-
-            foreach (char symbol in symbols)
-            {
-                if (sPassword.Contains(symbol))
+                if (conn.State == ConnectionState.Closed)
                 {
-                    symbolCheck = true;
+                    conn.Open();
                 }
-            }
+                string sql = $"SELECT * FROM tblUser";
+                command = new SqlCommand(sql, conn);
+                reader = command.ExecuteReader();
 
-            //if username is correct length
-            if (sUsername.Length >= 7)
-            {
-                //if username doesnt exists in the database already
-                if (found == false)
+                while (reader.Read())
                 {
-                    //if password is correct length
-                    if (sPassword.Length >= 7)
+                    if (sUsername == (reader.GetValue(1)).ToString())
                     {
-                        //if password contains at least one symbol (special character)
-                        if (symbolCheck == true)
+                        found = true;
+                    }
+                }
+                conn.Close();
+
+                string symbols = "!@#$%^&*";
+                Boolean symbolCheck = false;
+
+                foreach (char symbol in symbols)
+                {
+                    if (sPassword.Contains(symbol))
+                    {
+                        symbolCheck = true;
+                    }
+                }
+
+                //Because the " ' " symbol causes the sql statement to fuck out
+                string symbols2 = "'";
+                Boolean symbolCheck2 = false;
+
+                foreach (char symbol in symbols2)
+                {
+                    if (sUsername.Contains(symbol))
+                    {
+                        symbolCheck2 = true;
+                    }
+                }
+
+                //if username is correct length
+                if (sUsername.Length >= 7)
+                {
+                    errorProviderPassword.SetError(txtUsername, "");
+
+                    //if Username does not contain ' symbol
+                    if (symbolCheck2 == false)
+                    {
+                        errorProviderPassword.SetError(txtUsername, "");
+
+                        //if username doesnt exist in the database already
+                        if (found == false)
                         {
-                            //if both passwords match each other
-                            if (sPassword == sConfirm)
+                            errorProviderPassword.SetError(txtUsername, "");
+
+                            //if password is correct length
+                            if (sPassword.Length >= 7)
                             {
-                                //if at least 1 radiobutton indicating user rights is selected
-                                if (rbAdmin.Checked == true || rbNotAdmin.Checked == true)
+                                errorProviderPassword.SetError(txtPassword, "");
+
+                                //if password contains at least one symbol (special character)
+                                if (symbolCheck == true)
                                 {
+                                    errorProviderPassword.SetError(txtPassword, "");
 
-                                    int admin=0;
-
-                                    if (rbAdmin.Checked)
+                                    //if both passwords match each other
+                                    if (sPassword == sConfirm)
                                     {
-                                        admin = 1;
+                                        errorProviderPassword.SetError(txtConfirm, "");
+                                        errorProviderPassword.SetError(txtPassword, "");
+
+                                        //if at least 1 radiobutton indicating user rights is selected
+                                        if (rbAdmin.Checked == true || rbNotAdmin.Checked == true)
+                                        {
+                                            errorProviderPassword.SetError(rbAdmin, "");
+                                            errorProviderPassword.SetError(rbNotAdmin, "");
+
+                                            int admin = 0;
+
+                                            if (rbAdmin.Checked)
+                                            {
+                                                admin = 1;
+                                            }
+                                            else if (rbNotAdmin.Checked)
+                                            {
+                                                admin = 0;
+                                            }
+
+                                            //ENCRYPT PASSWORD
+                                            string encPassword = Encrypt(sPassword, 3);
+
+                                            //ADD TO DATABASE
+                                            if (conn.State == ConnectionState.Closed)
+                                            {
+                                                conn.Open();
+                                            }
+                                            string sql2 = $"INSERT INTO tblUser(Username, Password, isAdmin) VALUES ('{sUsername}','{encPassword}', {admin})";
+                                            command = new SqlCommand(sql2, conn);
+                                            adapter = new SqlDataAdapter();
+                                            adapter.InsertCommand = command;
+                                            adapter.InsertCommand.ExecuteNonQuery();
+                                            conn.Close();
+
+                                            MessageBox.Show("New User added successfully!");
+
+                                            //REFRESH DATABASE
+                                            loadDB("SELECT * FROM tblUser");
+
+                                            //REFRESH COMBOBOX
+                                            loadCMB("cmbUpdate");
+                                            loadCMB("cmbDelete");
+
+                                            //CLEAR FIELDS + COMPONENTS
+                                            txtUsername.Text = "";
+                                            txtPassword.Text = "";
+                                            txtConfirm.Text = "";
+                                            rbAdmin.Checked = false;
+                                            rbNotAdmin.Checked = false;
+                                        }
+                                        else
+                                        {
+                                            errorProviderPassword.SetError(rbAdmin, "Select at least one radiobutton!");
+                                            errorProviderPassword.SetError(rbNotAdmin, "Select at least one radiobutton!");
+                                            txtConfirm.Focus();
+                                        }
                                     }
-                                    else if (rbNotAdmin.Checked)
+                                    else
                                     {
-                                        admin = 0;
+                                        errorProviderPassword.SetError(txtConfirm, "Passwords do not match!");
+                                        errorProviderPassword.SetError(txtPassword, "Passwords do not match!");
+                                        txtConfirm.Focus();
                                     }
-
-                                    //ENCRYPT PASSWORD
-                                    string encPassword = Encrypt(sPassword, 3);
-
-                                    //ADD TO DATABASE
-
-
-
-                                    if (conn.State == ConnectionState.Closed)
-                                    {
-                                        conn.Open();
-                                    }
-                                    string sql2 = $"INSERT INTO tblUser(Username, Password, isAdmin) VALUES ('{sUsername}','{encPassword}', {admin})";
-                                    command = new SqlCommand(sql2, conn);
-                                    adapter = new SqlDataAdapter();
-                                    adapter.InsertCommand = command;
-                                    adapter.InsertCommand.ExecuteNonQuery();
-                                    conn.Close();
-
-                                    MessageBox.Show("New User added successfully!");
-
-                                    //REFRESH DATABASE
-                                    loadDB("SELECT * FROM tblUser");
-
-
                                 }
                                 else
                                 {
-                                    errorProviderPassword.SetError(rbAdmin, "Select at least one radiobutton!");
-                                    errorProviderPassword.SetError(rbNotAdmin, "Select at least one radiobutton!");
-                                    txtConfirm.Focus();
+                                    errorProviderPassword.SetError(txtPassword, "Passwords needs to contain a symbol or special character (!@#$%^&*)");
+                                    txtPassword.Focus();
                                 }
                             }
                             else
                             {
-                                errorProviderPassword.SetError(txtConfirm, "Passwords do not match!");
-                                errorProviderPassword.SetError(txtPassword, "Passwords do not match!");
-                                txtConfirm.Focus();
+                                errorProviderPassword.SetError(txtPassword, "Passwords needs to be 7 or more characters long!");
+                                txtPassword.Focus();
                             }
                         }
                         else
                         {
-                            errorProviderPassword.SetError(txtPassword, "Passwords needs to contain a symbol or special character (!@#$%^&*)");
-                            txtPassword.Focus();
+                            errorProviderPassword.SetError(txtUsername, "This Username already exists in the database!");
+                            txtUsername.Focus();
                         }
-                        
                     }
                     else
                     {
-                        errorProviderPassword.SetError(txtPassword, "Passwords needs to be 7 or more characters long!");
-                        txtPassword.Focus();
+                        errorProviderPassword.SetError(txtUsername, "Username cannot contain the following symbol '");
+                        txtUsername.Focus();
                     }
                 }
                 else
                 {
-                    errorProviderPassword.SetError(txtUsername, "This Username already exists in the database!");
+                    errorProviderPassword.SetError(txtUsername, "The username needs to be 7 or more characters!");
                     txtUsername.Focus();
                 }
+
             }
-            else
+            catch (SqlException ex)
             {
-                errorProviderPassword.SetError(txtUsername, "The username needs to be 7 or more characters!");
-                txtUsername.Focus();
+                MessageBox.Show(ex.Message);
             }
-
-
-            
-            
-           
         }
 
         private void btnSearch_MouseEnter(object sender, EventArgs e)
@@ -399,50 +436,51 @@ namespace Vendlism
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            grpAdd.Visible = false;
-            grpDelete.Visible = false;
-            grpSearch.Visible = true;
-            grpUpdate.Visible = false;
-            //  grpSearch.Location.X 277,326;
-            var point = new Point(277,326);
-            grpSearch.Location = point;
+            try
+            {
+                grpAdd.Visible = false;
+                grpDelete.Visible = false;
+                grpSearch.Visible = true;
+                grpUpdate.Visible = false;
+                //  grpSearch.Location.X 277,326;
+                var point = new Point(277, 326);
+                grpSearch.Location = point;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
         private void btnSearchUser_Click(object sender, EventArgs e)
         {
-            if (rbFilterNo.Checked == true || rbFilterYes.Checked == true)
+            try
             {
-                int admin = 0;
-                if (rbFilterNo.Checked == false)
+                if (rbFilterNo.Checked == true || rbFilterYes.Checked == true)
                 {
-                    admin = 0;
-                }
-                else if (rbFilterYes.Checked == true)
-                {
-                    admin = 1;
-                }
+                    int admin = 0;
+                    if (rbFilterNo.Checked == false)
+                    {
+                        admin = 0;
+                    }
+                    else if (rbFilterYes.Checked == true)
+                    {
+                        admin = 1;
+                    }
 
-                loadDB("SELECT * FROM tblUser WHERE Username LIKE  '%" + txtSearch.Text + "%' AND isAdmin = " + admin);
+                    loadDB("SELECT * FROM tblUser WHERE Username LIKE  '%" + txtSearch.Text + "%' AND isAdmin = " + admin);
+                }
             }
-            else
+            catch (Exception ex)
             {
-              
+                MessageBox.Show(ex.Message);
             }
-
-           
-           
-
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             loadDB("SELECT * FROM tblUser WHERE Username LIKE  '%"+txtSearch.Text+"%'");
-        }
-
-        private void grpAdd_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -455,25 +493,279 @@ namespace Vendlism
 
         private void cmbUpdate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (conn.State == ConnectionState.Closed)
+            try
             {
-                conn.Open();
-            }
-            string sql = $"SELECT * FROM tblUser";
-            command = new SqlCommand(sql, conn);
-            reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                if (reader.GetValue(1).ToString() == cmbUpdate.Text)
+                if (conn.State == ConnectionState.Closed)
                 {
-                 lblPK.Text = reader.GetValue(0).ToString();
+                    conn.Open();
                 }
-                
-               
-            }
-            conn.Close();
+                string sql = $"SELECT * FROM tblUser";
+                command = new SqlCommand(sql, conn);
+                reader = command.ExecuteReader();
 
+                while (reader.Read())
+                {
+                    if (reader.GetValue(1).ToString() == cmbUpdate.Text)
+                    {
+                        lblPK.Text = reader.GetValue(0).ToString();
+                        txtUpdatePassword.Text = Decrypt(reader.GetValue(2).ToString(), 3);
+
+                        if (reader.GetValue(3).ToString() == "True")
+                        {
+                            rbUpdateAdmin.Checked = true;
+                            rbUpdateAdmin2.Checked = false;
+                        }
+                        else
+                        {
+                            rbUpdateAdmin.Checked = false;
+                            rbUpdateAdmin2.Checked = true;
+                        }
+                    }
+                }
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        //Button to reset
+        private void button3_Click(object sender, EventArgs e)
+        {
+            loadDB("SELECT * FROM tblUser");
+            rbFilterNo.Checked = false;
+            rbFilterYes.Checked = false;
+            txtSearch.Text = "";
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+        }
+
+        //DELETE USER BUTTON
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //if user selected a username from combobox to delete
+                if (cmbDelete.SelectedIndex != -1)
+                {
+                    errorProviderPassword.SetError(cmbDelete, "");
+
+                    //Ask User if they are sure they would like to delete the selected user
+                    DialogResult dialogResult = MessageBox.Show("Are you sure you would like to delete this user: " + cmbDelete.Text + "?", "Delete User Confirmation", MessageBoxButtons.YesNo);
+
+                    //if they are sure and click YES
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        //CODE TO DELETE USER
+                        if (conn.State == ConnectionState.Closed)
+                        {
+                            conn.Open();
+                        }
+                        string sql = $"DELETE FROM tblUser WHERE User_ID = " + lblDeletePK.Text;
+                        command = new SqlCommand(sql, conn);
+                        adapter = new SqlDataAdapter();
+                        adapter.DeleteCommand = command;
+                        adapter.DeleteCommand.ExecuteNonQuery();
+                        conn.Close();
+
+                        //REFRESH COMBOBOX
+                        loadCMB("cmbDelete");
+                        loadCMB("cmbUpdate");
+
+                        //REFRESH DATAGRIDVIEW
+                        loadDB("SELECT * FROM tblUser");
+
+                        //Success message
+                        MessageBox.Show("User Deleted Successfully");
+
+                        //clear textbox and combobox
+                        lblDeletePK.Text = "";
+                        cmbDelete.SelectedIndex = -1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Operation Cancelled");
+                    }
+                }
+                else
+                {
+                    errorProviderPassword.SetError(cmbDelete, "Please select a user to delete");
+                    cmbDelete.Focus();
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void cmbDelete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                string sql = $"SELECT * FROM tblUser";
+                command = new SqlCommand(sql, conn);
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader.GetValue(1).ToString() == cmbDelete.Text)
+                    {
+                        lblDeletePK.Text = reader.GetValue(0).ToString();
+                    }
+                }
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnUpdateUser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbUpdate.Text != "")
+                {
+                    errorProviderPassword.SetError(cmbUpdate, "");
+
+                    int admin = 0;
+
+                    if (rbUpdateAdmin.Checked)
+                    {
+                        admin = 1;
+                    }
+                    else if (rbUpdateAdmin2.Checked)
+                    {
+                        admin = 0;
+                    }
+
+                    //encrypt new/updated password
+                    string encPassword = Encrypt(txtUpdatePassword.Text, 3);
+
+                    //Code to update user
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+                    string sql = $"UPDATE tblUser SET Username = '" + cmbUpdate.Text + "', Password = '" + encPassword + "', isAdmin = " + admin + " WHERE User_ID = " + int.Parse(lblPK.Text); ;
+                    command = new SqlCommand(sql, conn);
+                    adapter = new SqlDataAdapter();
+                    adapter.UpdateCommand = command;
+                    adapter.UpdateCommand.ExecuteNonQuery();
+                    conn.Close();
+
+                    //REFRESH COMBOBOX
+                    loadCMB("cmbUpdate");
+                    loadCMB("cmbDelete");
+
+                    //REFRESH DATAGRIDVIEW
+                    loadDB("SELECT * FROM tblUser");
+
+                    //clear fields
+                    lblPK.Text = "";
+                    cmbUpdate.SelectedIndex = -1;
+                    txtUpdatePassword.Text = "";
+                    rbUpdateAdmin.Checked = false;
+                    rbUpdateAdmin2.Checked = false;
+
+                    //success message
+                    MessageBox.Show("User Updated Successfully");
+
+                }
+                else
+                {
+                    errorProviderPassword.SetError(cmbUpdate, "Please select a user to update");
+                    cmbUpdate.Focus();
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void rbFilterYes_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbFilterYes.Checked)
+            {
+                loadDB("SELECT * FROM tblUser WHERE Username LIKE  '%" + txtSearch.Text + "%' AND isAdmin = 1");
+            }
+            
+        }
+
+        private void rbFilterNo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbFilterNo.Checked)
+            {
+                loadDB("SELECT * FROM tblUser WHERE Username LIKE  '%" + txtSearch.Text + "%' AND isAdmin = 0");
+            }
+            
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbFilterNo.Checked)
+            {
+                loadDB("SELECT * FROM tblUser WHERE Username LIKE  '%" + txtSearch.Text + "%' AND isAdmin = 0 ORDER BY Username ASC");
+            }
+            else if (rbFilterYes.Checked)
+            {
+                loadDB("SELECT * FROM tblUser WHERE Username LIKE  '%" + txtSearch.Text + "%' AND isAdmin = 1 ORDER BY Username ASC");
+            }
+            else
+            {
+                loadDB("SELECT * FROM tblUser WHERE Username LIKE  '%" + txtSearch.Text + "%' ORDER BY Username ASC");
+            }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbFilterNo.Checked)
+            {
+                loadDB("SELECT * FROM tblUser WHERE Username LIKE  '%" + txtSearch.Text + "%' AND isAdmin = 0 ORDER BY Username DESC");
+            }
+            else if (rbFilterYes.Checked)
+            {
+                loadDB("SELECT * FROM tblUser WHERE Username LIKE  '%" + txtSearch.Text + "%' AND isAdmin = 1 ORDER BY Username DESC");
+            }
+            else
+            {
+                loadDB("SELECT * FROM tblUser WHERE Username LIKE  '%" + txtSearch.Text + "%' ORDER BY Username DESC");
+            }
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            //reset button
+            txtUsername.Text = "";
+            txtPassword.Text = "";
+            txtConfirm.Text = "";
+            rbAdmin.Checked = false;
+            rbAdmin.Checked = false;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            //picture (button) to exit application
+            Application.Exit();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            //picture (button) for help
+            MessageBox.Show("");
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            //return to main homepage 
         }
     }
 }

@@ -40,14 +40,6 @@ namespace Vendlism
             btnAdmin.BackColor = ColorTranslator.FromHtml("#99D9EA");
             btnPay.BackColor = ColorTranslator.FromHtml("#99D9EA");
 
-            try
-            {
-                
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
 
             conn = new SqlConnection(connectionString);
 
@@ -83,9 +75,6 @@ namespace Vendlism
                 else
                 {
                     // Handle the case where the label with the specified name is not found
-                    // You can choose to throw an exception, display an error message, or take any other appropriate action.
-                    // For this example, we'll simply print a message to the console.
-
                     MessageBox.Show("Label " + labelName + " not found.");
                 }
             }

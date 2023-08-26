@@ -123,6 +123,17 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\exittt.png" />
+    <None Include="Resources\help-129.png" />
+    <None Include="Resources\EXIT1.png" />
+    <None Include="Resources\back-icon-png-16.jpg" />
+    <None Include="Resources\X2.png" />
+    <None Include="Resources\X1.png" />
+    <None Include="Resources\RETURN1.png" />
+    <None Include="Resources\X.png" />
+    <None Include="Resources\help1.jpg" />
+    <None Include="Resources\EXIT.png" />
+    <None Include="Resources\RETURN.png" />
     <None Include="Resources\toggle on1.png" />
     <None Include="Resources\Toggle off1.png" />
     <None Include="Resources\Toggle off.png" />
