@@ -650,35 +650,74 @@ namespace Vendlism
                     //encrypt new/updated password
                     string encPassword = Encrypt(txtUpdatePassword.Text, 3);
 
-                    //Code to update user
-                    if (conn.State == ConnectionState.Closed)
+
+                    //Because the " ' " symbol causes the sql statement to fuck out
+                    string symbols2 = "'";
+                    Boolean symbolCheck2 = false;
+
+                    string sUsername = cmbUpdate.Text;
+
+                    foreach (char symbol in symbols2)
                     {
-                        conn.Open();
+                        if (sUsername.Contains(symbol))
+                        {
+                            symbolCheck2 = true;
+                        }
                     }
-                    string sql = $"UPDATE tblUser SET Username = '" + cmbUpdate.Text + "', Password = '" + encPassword + "', isAdmin = " + admin + " WHERE User_ID = " + int.Parse(lblPK.Text); ;
-                    command = new SqlCommand(sql, conn);
-                    adapter = new SqlDataAdapter();
-                    adapter.UpdateCommand = command;
-                    adapter.UpdateCommand.ExecuteNonQuery();
-                    conn.Close();
 
-                    //REFRESH COMBOBOX
-                    loadCMB("cmbUpdate");
-                    loadCMB("cmbDelete");
+                  
+                    if (sUsername.Length >= 7)
+                    {
+                        errorProviderPassword.SetError(cmbUpdate, "");
 
-                    //REFRESH DATAGRIDVIEW
-                    loadDB("SELECT * FROM tblUser");
+                        //if Username does not contain ' symbol
+                        if (symbolCheck2 == false)
+                        {
+                            errorProviderPassword.SetError(cmbUpdate, "");
 
-                    //clear fields
-                    lblPK.Text = "";
-                    cmbUpdate.SelectedIndex = -1;
-                    txtUpdatePassword.Text = "";
-                    rbUpdateAdmin.Checked = false;
-                    rbUpdateAdmin2.Checked = false;
+                            
 
-                    //success message
-                    MessageBox.Show("User Updated Successfully");
 
+                                //Code to update user
+                                    if (conn.State == ConnectionState.Closed)
+                                    {
+                                        conn.Open();
+                                    }
+                                    string sql3 = $"UPDATE tblUser SET Username = '" + cmbUpdate.Text + "', Password = '" + encPassword + "', isAdmin = " + admin + " WHERE User_ID = " + int.Parse(lblPK.Text); ;
+                                    command = new SqlCommand(sql3, conn);
+                                    adapter = new SqlDataAdapter();
+                                    adapter.UpdateCommand = command;
+                                    adapter.UpdateCommand.ExecuteNonQuery();
+                                    conn.Close();
+
+                                    //REFRESH COMBOBOX
+                                    loadCMB("cmbUpdate");
+                                    loadCMB("cmbDelete");
+
+                                    //REFRESH DATAGRIDVIEW
+                                    loadDB("SELECT * FROM tblUser");
+
+                                    //clear fields
+                                    lblPK.Text = "";
+                                    cmbUpdate.SelectedIndex = -1;
+                                    txtUpdatePassword.Text = "";
+                                    rbUpdateAdmin.Checked = false;
+                                    rbUpdateAdmin2.Checked = false;
+
+                                    //success message
+                                    MessageBox.Show("User Updated Successfully");
+                        }
+                        else
+                        {
+                            errorProviderPassword.SetError(cmbUpdate, "Username cannot contain the following symbol '");
+                            cmbUpdate.Focus();
+                        }
+                    }
+                    else
+                    {
+                        errorProviderPassword.SetError(cmbUpdate, "The username needs to be 7 or more characters!");
+                        cmbUpdate.Focus();
+                    }
                 }
                 else
                 {

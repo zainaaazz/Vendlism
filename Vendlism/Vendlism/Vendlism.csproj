@@ -69,6 +69,12 @@
     <Compile Include="frmMachine.Designer.cs">
       <DependentUpon>frmMachine.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSuppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSuppliers.Designer.cs">
+      <DependentUpon>frmSuppliers.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +85,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmMachine.resx">
       <DependentUpon>frmMachine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSuppliers.resx">
+      <DependentUpon>frmSuppliers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUsers.resx">
       <DependentUpon>frmUsers.cs</DependentUpon>
@@ -123,6 +132,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\MaintainSuppliers.png" />
     <None Include="Resources\exittt.png" />
     <None Include="Resources\help-129.png" />
     <None Include="Resources\EXIT1.png" />
