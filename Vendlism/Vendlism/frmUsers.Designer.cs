@@ -385,7 +385,7 @@
             this.grpUpdate.Controls.Add(this.label10);
             this.grpUpdate.Controls.Add(this.label11);
             this.grpUpdate.Controls.Add(this.cmbUpdate);
-            this.grpUpdate.Location = new System.Drawing.Point(272, 353);
+            this.grpUpdate.Location = new System.Drawing.Point(271, 347);
             this.grpUpdate.Name = "grpUpdate";
             this.grpUpdate.Size = new System.Drawing.Size(741, 269);
             this.grpUpdate.TabIndex = 14;
@@ -492,6 +492,7 @@
             this.cmbUpdate.Size = new System.Drawing.Size(157, 21);
             this.cmbUpdate.TabIndex = 15;
             this.cmbUpdate.SelectedIndexChanged += new System.EventHandler(this.cmbUpdate_SelectedIndexChanged);
+            this.cmbUpdate.TextChanged += new System.EventHandler(this.cmbUpdate_TextChanged);
             // 
             // grpSearch
             // 
@@ -726,8 +727,8 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources.MaintainUsers;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1062, 688);
-            this.Controls.Add(this.grpAdd);
             this.Controls.Add(this.grpUpdate);
+            this.Controls.Add(this.grpAdd);
             this.Controls.Add(this.grpDelete);
             this.Controls.Add(this.grpSearch);
             this.Controls.Add(this.pictureBox2);

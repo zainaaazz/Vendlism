@@ -11,7 +11,6 @@ using System.Data.SqlClient;
 
 namespace Vendlism
 {
-    //AMIEL SOMARU TEST TEST TEST TEST TEST TEST
     public partial class frmUsers : Form
     {
         SqlConnection conn;
@@ -21,6 +20,10 @@ namespace Vendlism
 
         public string connectionString = @"Data Source=LAPTOP-7C5EDQSL\SQLEXPRESS;Initial Catalog=Vendilism;Integrated Security=True; Connect Timeout=30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+
+        Boolean checkedChanged = false;
+
+        string oldUsername = "";
 
         public frmUsers()
         {
@@ -59,6 +62,9 @@ namespace Vendlism
             loadDB("SELECT * FROM tblUser");
             loadCMB("cmbDelete");
             loadCMB("cmbUpdate");
+
+            btnSearch_Click(sender, e);
+            btnSearch.Focus();
 
             //Set location of all the groupboxes
             var point = new Point(277, 326);
@@ -120,6 +126,23 @@ namespace Vendlism
                 chars[i] = (char)(chars[i] - key);
             }
             return new string(chars);
+        }
+
+        public Boolean checkSymbol(string name)
+        {
+
+            string symbols2 = "$'";
+            Boolean symbolCheck2 = false;
+
+            foreach (char symbol in symbols2)
+            {
+                if (name.Contains(symbol))
+                {
+                    symbolCheck2 = true;
+                }
+            }
+
+            return symbolCheck2;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -272,7 +295,7 @@ namespace Vendlism
                 }
                 conn.Close();
 
-                string symbols = "!@#$%^&*";
+                string symbols = "!@#%^&*";
                 Boolean symbolCheck = false;
 
                 foreach (char symbol in symbols)
@@ -284,7 +307,7 @@ namespace Vendlism
                 }
 
                 //Because the " ' " symbol causes the sql statement to fuck out
-                string symbols2 = "'";
+                string symbols2 = "'$";
                 Boolean symbolCheck2 = false;
 
                 foreach (char symbol in symbols2)
@@ -300,8 +323,8 @@ namespace Vendlism
                 {
                     errorProviderPassword.SetError(txtUsername, "");
 
-                    //if Username does not contain ' symbol
-                    if (symbolCheck2 == false)
+                    //if Username does not contain ' or & symbol
+                    if (checkSymbol(sUsername) == false)
                     {
                         errorProviderPassword.SetError(txtUsername, "");
 
@@ -315,82 +338,96 @@ namespace Vendlism
                             {
                                 errorProviderPassword.SetError(txtPassword, "");
 
-                                //if password contains at least one symbol (special character)
+                                //if password contains at least one OF THE ALLOWED symbols (special character)
                                 if (symbolCheck == true)
                                 {
                                     errorProviderPassword.SetError(txtPassword, "");
 
-                                    //if both passwords match each other
-                                    if (sPassword == sConfirm)
+                                    string tempPass = Encrypt(txtPassword.Text, 3);
+
+                                    //encrypted password cannot contain ' or $
+                                    if (checkSymbol(tempPass) == false)
                                     {
-                                        errorProviderPassword.SetError(txtConfirm, "");
+
                                         errorProviderPassword.SetError(txtPassword, "");
 
-                                        //if at least 1 radiobutton indicating user rights is selected
-                                        if (rbAdmin.Checked == true || rbNotAdmin.Checked == true)
+                                        //if both passwords match each other
+                                        if (sPassword == sConfirm)
                                         {
-                                            errorProviderPassword.SetError(rbAdmin, "");
-                                            errorProviderPassword.SetError(rbNotAdmin, "");
+                                            errorProviderPassword.SetError(txtConfirm, "");
+                                            errorProviderPassword.SetError(txtPassword, "");
 
-                                            int admin = 0;
-
-                                            if (rbAdmin.Checked)
+                                            //if at least 1 radiobutton indicating user rights is selected
+                                            if (rbAdmin.Checked == true || rbNotAdmin.Checked == true)
                                             {
-                                                admin = 1;
+                                                errorProviderPassword.SetError(rbAdmin, "");
+                                                errorProviderPassword.SetError(rbNotAdmin, "");
+
+                                                int admin = 0;
+
+                                                if (rbAdmin.Checked)
+                                                {
+                                                    admin = 1;
+                                                }
+                                                else if (rbNotAdmin.Checked)
+                                                {
+                                                    admin = 0;
+                                                }
+
+                                                //ENCRYPT PASSWORD
+                                                string encPassword = Encrypt(sPassword, 3);
+
+                                                //ADD TO DATABASE
+                                                if (conn.State == ConnectionState.Closed)
+                                                {
+                                                    conn.Open();
+                                                }
+                                                string sql2 = $"INSERT INTO tblUser(Username, Password, isAdmin) VALUES ('{sUsername}','{encPassword}', {admin})";
+                                                command = new SqlCommand(sql2, conn);
+                                                adapter = new SqlDataAdapter();
+                                                adapter.InsertCommand = command;
+                                                adapter.InsertCommand.ExecuteNonQuery();
+                                                conn.Close();
+
+                                                MessageBox.Show("New User added successfully!");
+
+                                                //REFRESH DATABASE
+                                                loadDB("SELECT * FROM tblUser");
+
+                                                //REFRESH COMBOBOX
+                                                loadCMB("cmbUpdate");
+                                                loadCMB("cmbDelete");
+
+                                                //CLEAR FIELDS + COMPONENTS
+                                                txtUsername.Text = "";
+                                                txtPassword.Text = "";
+                                                txtConfirm.Text = "";
+                                                rbAdmin.Checked = false;
+                                                rbNotAdmin.Checked = false;
                                             }
-                                            else if (rbNotAdmin.Checked)
+                                            else
                                             {
-                                                admin = 0;
+                                                errorProviderPassword.SetError(rbAdmin, "Select Admin Rights!");
+                                                errorProviderPassword.SetError(rbNotAdmin, "Select Admin Rights!");
+                                                txtConfirm.Focus();
                                             }
-
-                                            //ENCRYPT PASSWORD
-                                            string encPassword = Encrypt(sPassword, 3);
-
-                                            //ADD TO DATABASE
-                                            if (conn.State == ConnectionState.Closed)
-                                            {
-                                                conn.Open();
-                                            }
-                                            string sql2 = $"INSERT INTO tblUser(Username, Password, isAdmin) VALUES ('{sUsername}','{encPassword}', {admin})";
-                                            command = new SqlCommand(sql2, conn);
-                                            adapter = new SqlDataAdapter();
-                                            adapter.InsertCommand = command;
-                                            adapter.InsertCommand.ExecuteNonQuery();
-                                            conn.Close();
-
-                                            MessageBox.Show("New User added successfully!");
-
-                                            //REFRESH DATABASE
-                                            loadDB("SELECT * FROM tblUser");
-
-                                            //REFRESH COMBOBOX
-                                            loadCMB("cmbUpdate");
-                                            loadCMB("cmbDelete");
-
-                                            //CLEAR FIELDS + COMPONENTS
-                                            txtUsername.Text = "";
-                                            txtPassword.Text = "";
-                                            txtConfirm.Text = "";
-                                            rbAdmin.Checked = false;
-                                            rbNotAdmin.Checked = false;
                                         }
                                         else
                                         {
-                                            errorProviderPassword.SetError(rbAdmin, "Select at least one radiobutton!");
-                                            errorProviderPassword.SetError(rbNotAdmin, "Select at least one radiobutton!");
+                                            errorProviderPassword.SetError(txtConfirm, "Passwords do not match!");
+                                            errorProviderPassword.SetError(txtPassword, "Passwords do not match!");
                                             txtConfirm.Focus();
                                         }
                                     }
                                     else
                                     {
-                                        errorProviderPassword.SetError(txtConfirm, "Passwords do not match!");
-                                        errorProviderPassword.SetError(txtPassword, "Passwords do not match!");
-                                        txtConfirm.Focus();
+                                        errorProviderPassword.SetError(txtPassword, "Passwords cannot contain the following symbols ($!)");
+                                        txtPassword.Focus();
                                     }
                                 }
                                 else
                                 {
-                                    errorProviderPassword.SetError(txtPassword, "Passwords needs to contain a symbol or special character (!@#$%^&*)");
+                                    errorProviderPassword.SetError(txtPassword, "Passwords needs to contain a symbol or special character @#%^&* BUT NOT $!");
                                     txtPassword.Focus();
                                 }
                             }
@@ -408,7 +445,7 @@ namespace Vendlism
                     }
                     else
                     {
-                        errorProviderPassword.SetError(txtUsername, "Username cannot contain the following symbol '");
+                        errorProviderPassword.SetError(txtUsername, "Username cannot contain the following symbols ' or $");
                         txtUsername.Focus();
                     }
                 }
@@ -496,6 +533,11 @@ namespace Vendlism
         {
             try
             {
+
+                oldUsername = cmbUpdate.Text;
+               // MessageBox.Show(oldUsername);
+
+
                 if (conn.State == ConnectionState.Closed)
                 {
                     conn.Open();
@@ -632,7 +674,7 @@ namespace Vendlism
         {
             try
             {
-                if (cmbUpdate.Text != "")
+                if ((cmbUpdate.Text != ""))
                 {
                     errorProviderPassword.SetError(cmbUpdate, "");
 
@@ -650,12 +692,39 @@ namespace Vendlism
                     //encrypt new/updated password
                     string encPassword = Encrypt(txtUpdatePassword.Text, 3);
 
+                   
 
-                    //Because the " ' " symbol causes the sql statement to fuck out
-                    string symbols2 = "'";
+                    Boolean foundDB = false;
+                    string sUsername = cmbUpdate.Text;
+
+                    if (sUsername != oldUsername)
+                    {
+                        if (conn.State == ConnectionState.Closed)
+                        {
+                            conn.Open();
+                        }
+                        string sql = $"SELECT * FROM tblUser";
+                        command = new SqlCommand(sql, conn);
+                        reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            if (sUsername == (reader.GetValue(1)).ToString())
+                            {
+                                foundDB = true;
+                            }
+                        }
+                        conn.Close();
+                    }
+
+                   
+                  
+
+                    //Because the " ' " symbol causes the sql statement to fuck out 
+                    string symbols2 = "$'";
                     Boolean symbolCheck2 = false;
 
-                    string sUsername = cmbUpdate.Text;
+                  
 
                     foreach (char symbol in symbols2)
                     {
@@ -665,57 +734,98 @@ namespace Vendlism
                         }
                     }
 
-                  
-                    if (sUsername.Length >= 7)
+
+                    string symbols = "!@#%^&*";
+                    Boolean symbolCheck = false;
+
+                    foreach (char symbol in symbols)
+                    {
+                        if (txtUpdatePassword.Text.Contains(symbol))
+                        {
+                            symbolCheck = true;
+                        }
+                    }
+
+                    if (foundDB ==false)
                     {
                         errorProviderPassword.SetError(cmbUpdate, "");
 
-                        //if Username does not contain ' symbol
-                        if (symbolCheck2 == false)
+                        if (sUsername.Length >= 7)
                         {
                             errorProviderPassword.SetError(cmbUpdate, "");
 
-                            
+                            //if Username does not contain ' symbol
+                            if (symbolCheck2 == false)
+                            {
+                                errorProviderPassword.SetError(cmbUpdate, "");
 
+                                if (txtUpdatePassword.Text.Length >= 7)
+                                {
+                                    errorProviderPassword.SetError(txtUpdatePassword, "");
 
-                                //Code to update user
-                                    if (conn.State == ConnectionState.Closed)
+                                    //if updated password contains symbol
+                                    if (symbolCheck == true)
                                     {
-                                        conn.Open();
+                                        errorProviderPassword.SetError(txtUpdatePassword, "");
+
+                                        //Code to update user
+                                        if (conn.State == ConnectionState.Closed)
+                                        {
+                                            conn.Open();
+                                        }
+                                        string sql3 = $"UPDATE tblUser SET Username = '" + cmbUpdate.Text + "', Password = '" + encPassword + "', isAdmin = " + admin + " WHERE User_ID = " + int.Parse(lblPK.Text); ;
+                                        command = new SqlCommand(sql3, conn);
+                                        adapter = new SqlDataAdapter();
+                                        adapter.UpdateCommand = command;
+                                        adapter.UpdateCommand.ExecuteNonQuery();
+                                        conn.Close();
+
+                                        //REFRESH COMBOBOX
+                                        loadCMB("cmbUpdate");
+                                        loadCMB("cmbDelete");
+
+                                        //REFRESH DATAGRIDVIEW
+                                        loadDB("SELECT * FROM tblUser");
+
+                                        //clear fields
+                                        lblPK.Text = "";
+                                        cmbUpdate.SelectedIndex = -1;
+                                        txtUpdatePassword.Text = "";
+                                        rbUpdateAdmin.Checked = false;
+                                        rbUpdateAdmin2.Checked = false;
+
+                                        //success message
+                                        MessageBox.Show("User Updated Successfully");
+
                                     }
-                                    string sql3 = $"UPDATE tblUser SET Username = '" + cmbUpdate.Text + "', Password = '" + encPassword + "', isAdmin = " + admin + " WHERE User_ID = " + int.Parse(lblPK.Text); ;
-                                    command = new SqlCommand(sql3, conn);
-                                    adapter = new SqlDataAdapter();
-                                    adapter.UpdateCommand = command;
-                                    adapter.UpdateCommand.ExecuteNonQuery();
-                                    conn.Close();
+                                    else
+                                    {
+                                        errorProviderPassword.SetError(txtUpdatePassword, "Password needs to contain a symbol (!@#%^&*)");
+                                        txtUpdatePassword.Focus();
+                                    }
 
-                                    //REFRESH COMBOBOX
-                                    loadCMB("cmbUpdate");
-                                    loadCMB("cmbDelete");
-
-                                    //REFRESH DATAGRIDVIEW
-                                    loadDB("SELECT * FROM tblUser");
-
-                                    //clear fields
-                                    lblPK.Text = "";
-                                    cmbUpdate.SelectedIndex = -1;
-                                    txtUpdatePassword.Text = "";
-                                    rbUpdateAdmin.Checked = false;
-                                    rbUpdateAdmin2.Checked = false;
-
-                                    //success message
-                                    MessageBox.Show("User Updated Successfully");
+                                }
+                                else
+                                {
+                                    errorProviderPassword.SetError(txtUpdatePassword, "Password length needs to be equal to or more than 7 characters");
+                                    txtUpdatePassword.Focus();
+                                }
+                            }
+                            else
+                            {
+                                errorProviderPassword.SetError(cmbUpdate, "Username cannot contain the following symbols ' or $");
+                                cmbUpdate.Focus();
+                            }
                         }
                         else
                         {
-                            errorProviderPassword.SetError(cmbUpdate, "Username cannot contain the following symbol '");
+                            errorProviderPassword.SetError(cmbUpdate, "The username needs to be 7 or more characters!");
                             cmbUpdate.Focus();
                         }
                     }
                     else
                     {
-                        errorProviderPassword.SetError(cmbUpdate, "The username needs to be 7 or more characters!");
+                        errorProviderPassword.SetError(cmbUpdate, "The new username you are trying to change already exists in the database");
                         cmbUpdate.Focus();
                     }
                 }
@@ -806,6 +916,58 @@ namespace Vendlism
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             //return to main homepage 
+        }
+
+        private void cmbUpdate_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                oldUsername = cmbUpdate.Text;
+
+                if (cmbUpdate.Text == "")
+                {
+                    lblPK.Text = "";
+                    txtUpdatePassword.Text = "";
+                    rbUpdateAdmin.Checked = false;
+                    rbUpdateAdmin2.Checked = false;
+                }
+                else
+                {
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+                    string sql = $"SELECT * FROM tblUser";
+                    command = new SqlCommand(sql, conn);
+                    reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        if (reader.GetValue(1).ToString() == cmbUpdate.Text)
+                        {
+                            lblPK.Text = reader.GetValue(0).ToString();
+                            txtUpdatePassword.Text = Decrypt(reader.GetValue(2).ToString(), 3);
+
+                            if (reader.GetValue(3).ToString() == "True")
+                            {
+                                rbUpdateAdmin.Checked = true;
+                                rbUpdateAdmin2.Checked = false;
+                            }
+                            else
+                            {
+                                rbUpdateAdmin.Checked = false;
+                                rbUpdateAdmin2.Checked = true;
+                            }
+                        }
+                    }
+                    conn.Close();
+                }
+                
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

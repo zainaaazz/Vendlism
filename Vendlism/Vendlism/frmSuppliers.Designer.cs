@@ -45,6 +45,9 @@
             this.btnDeleteSupplier = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.grpUpdate = new System.Windows.Forms.GroupBox();
+            this.txtUpdateAddress = new System.Windows.Forms.TextBox();
+            this.txtUpdatePhone = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.lblPK = new System.Windows.Forms.Label();
             this.lblPrimaryKey = new System.Windows.Forms.Label();
             this.btnUpdateSupplier = new System.Windows.Forms.Button();
@@ -54,6 +57,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.cmbUpdate = new System.Windows.Forms.ComboBox();
             this.grpAdd = new System.Windows.Forms.GroupBox();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -64,6 +68,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.grpSearch = new System.Windows.Forms.GroupBox();
+            this.cbPotch = new System.Windows.Forms.CheckBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.label5 = new System.Windows.Forms.Label();
@@ -71,11 +76,6 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtAddress = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtUpdatePhone = new System.Windows.Forms.TextBox();
-            this.txtUpdateAddress = new System.Windows.Forms.TextBox();
-            this.cbPotch = new System.Windows.Forms.CheckBox();
             this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -290,13 +290,37 @@
             this.grpUpdate.Controls.Add(this.label10);
             this.grpUpdate.Controls.Add(this.label11);
             this.grpUpdate.Controls.Add(this.cmbUpdate);
-            this.grpUpdate.Location = new System.Drawing.Point(336, 328);
+            this.grpUpdate.Location = new System.Drawing.Point(336, 334);
             this.grpUpdate.Name = "grpUpdate";
             this.grpUpdate.Size = new System.Drawing.Size(741, 250);
             this.grpUpdate.TabIndex = 104;
             this.grpUpdate.TabStop = false;
             this.grpUpdate.Text = "UPDATE SUPPLIER";
             this.grpUpdate.Visible = false;
+            // 
+            // txtUpdateAddress
+            // 
+            this.txtUpdateAddress.Location = new System.Drawing.Point(231, 170);
+            this.txtUpdateAddress.Name = "txtUpdateAddress";
+            this.txtUpdateAddress.Size = new System.Drawing.Size(157, 20);
+            this.txtUpdateAddress.TabIndex = 31;
+            // 
+            // txtUpdatePhone
+            // 
+            this.txtUpdatePhone.Location = new System.Drawing.Point(231, 132);
+            this.txtUpdatePhone.Name = "txtUpdatePhone";
+            this.txtUpdatePhone.Size = new System.Drawing.Size(157, 20);
+            this.txtUpdatePhone.TabIndex = 30;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(33, 168);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(134, 20);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "Supplier Address:";
             // 
             // lblPK
             // 
@@ -373,6 +397,7 @@
             this.cmbUpdate.Size = new System.Drawing.Size(157, 21);
             this.cmbUpdate.TabIndex = 15;
             this.cmbUpdate.SelectedIndexChanged += new System.EventHandler(this.cmbUpdate_SelectedIndexChanged);
+            this.cmbUpdate.TextChanged += new System.EventHandler(this.cmbUpdate_TextChanged);
             // 
             // grpAdd
             // 
@@ -394,21 +419,28 @@
             this.grpAdd.Text = "ADD SUPPLIER";
             this.grpAdd.Visible = false;
             // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(234, 139);
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(157, 20);
+            this.txtAddress.TabIndex = 15;
+            // 
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(452, 27);
+            this.button2.Location = new System.Drawing.Point(438, 22);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(69, 25);
             this.button2.TabIndex = 14;
             this.button2.Text = "Reset";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txtPhone
             // 
             this.txtPhone.Location = new System.Drawing.Point(234, 100);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.PasswordChar = '*';
             this.txtPhone.Size = new System.Drawing.Size(157, 20);
             this.txtPhone.TabIndex = 9;
             // 
@@ -431,12 +463,12 @@
             this.btnAddSupplier.TabIndex = 12;
             this.btnAddSupplier.Text = "Add New Supplier";
             this.btnAddSupplier.UseVisualStyleBackColor = true;
+            this.btnAddSupplier.Click += new System.EventHandler(this.btnAddSupplier_Click);
             // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(234, 62);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.PasswordChar = '*';
             this.txtEmail.Size = new System.Drawing.Size(157, 20);
             this.txtEmail.TabIndex = 8;
             // 
@@ -493,6 +525,17 @@
             this.grpSearch.TabIndex = 105;
             this.grpSearch.TabStop = false;
             this.grpSearch.Text = "SEARCH SUPPLIER";
+            // 
+            // cbPotch
+            // 
+            this.cbPotch.AutoSize = true;
+            this.cbPotch.Location = new System.Drawing.Point(245, 73);
+            this.cbPotch.Name = "cbPotch";
+            this.cbPotch.Size = new System.Drawing.Size(133, 17);
+            this.cbPotch.TabIndex = 10;
+            this.cbPotch.Text = "Suppliers in Potch only";
+            this.cbPotch.UseVisualStyleBackColor = true;
+            this.cbPotch.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -569,49 +612,6 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Search by Supplier Name:";
             // 
-            // txtAddress
-            // 
-            this.txtAddress.Location = new System.Drawing.Point(234, 139);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.PasswordChar = '*';
-            this.txtAddress.Size = new System.Drawing.Size(157, 20);
-            this.txtAddress.TabIndex = 15;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(33, 168);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(134, 20);
-            this.label13.TabIndex = 29;
-            this.label13.Text = "Supplier Address:";
-            // 
-            // txtUpdatePhone
-            // 
-            this.txtUpdatePhone.Location = new System.Drawing.Point(231, 132);
-            this.txtUpdatePhone.Name = "txtUpdatePhone";
-            this.txtUpdatePhone.Size = new System.Drawing.Size(157, 20);
-            this.txtUpdatePhone.TabIndex = 30;
-            // 
-            // txtUpdateAddress
-            // 
-            this.txtUpdateAddress.Location = new System.Drawing.Point(231, 170);
-            this.txtUpdateAddress.Name = "txtUpdateAddress";
-            this.txtUpdateAddress.Size = new System.Drawing.Size(157, 20);
-            this.txtUpdateAddress.TabIndex = 31;
-            // 
-            // cbPotch
-            // 
-            this.cbPotch.AutoSize = true;
-            this.cbPotch.Location = new System.Drawing.Point(245, 73);
-            this.cbPotch.Name = "cbPotch";
-            this.cbPotch.Size = new System.Drawing.Size(133, 17);
-            this.cbPotch.TabIndex = 10;
-            this.cbPotch.Text = "Suppliers in Potch only";
-            this.cbPotch.UseVisualStyleBackColor = true;
-            this.cbPotch.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // errorProviderPassword
             // 
             this.errorProviderPassword.ContainerControl = this;
@@ -623,16 +623,17 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources.MaintainSuppliers;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1046, 649);
+            this.Controls.Add(this.grpAdd);
+            this.Controls.Add(this.grpSearch);
             this.Controls.Add(this.grpUpdate);
             this.Controls.Add(this.grpDelete);
-            this.Controls.Add(this.grpSearch);
-            this.Controls.Add(this.grpAdd);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmSuppliers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmSuppliers";
