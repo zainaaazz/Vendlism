@@ -491,5 +491,12 @@ namespace Vendlism
             this.Hide();
             supp.Show();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frmStockItems stock = new frmStockItems();
+            this.Hide();
+            stock.Show();
+        }
     }
 }

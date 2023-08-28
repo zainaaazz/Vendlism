@@ -443,12 +443,13 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(942, 145);
+            this.button3.Location = new System.Drawing.Point(900, 142);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.Size = new System.Drawing.Size(73, 38);
             this.button3.TabIndex = 32;
-            this.button3.Text = "button3";
+            this.button3.Text = "Stock";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // frmMachine
             // 
