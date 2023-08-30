@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -77,6 +77,8 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.lblSlot = new System.Windows.Forms.Label();
+            this.lblAddWarning = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -135,14 +137,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridView1.Location = new System.Drawing.Point(31, 117);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -153,6 +155,7 @@
             // 
             // grpAdd
             // 
+            this.grpAdd.Controls.Add(this.lblSlot);
             this.grpAdd.Controls.Add(this.spnQuantity);
             this.grpAdd.Controls.Add(this.spnPrice);
             this.grpAdd.Controls.Add(this.label14);
@@ -173,14 +176,14 @@
             // 
             // spnQuantity
             // 
-            this.spnQuantity.Location = new System.Drawing.Point(234, 63);
+            this.spnQuantity.Location = new System.Drawing.Point(230, 110);
             this.spnQuantity.Name = "spnQuantity";
             this.spnQuantity.Size = new System.Drawing.Size(157, 20);
             this.spnQuantity.TabIndex = 17;
             // 
             // spnPrice
             // 
-            this.spnPrice.Location = new System.Drawing.Point(234, 99);
+            this.spnPrice.Location = new System.Drawing.Point(230, 146);
             this.spnPrice.Name = "spnPrice";
             this.spnPrice.Size = new System.Drawing.Size(157, 20);
             this.spnPrice.TabIndex = 16;
@@ -188,7 +191,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(234, 144);
+            this.label14.Location = new System.Drawing.Point(230, 191);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(368, 13);
             this.label14.TabIndex = 15;
@@ -197,7 +200,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(438, 22);
+            this.button2.Location = new System.Drawing.Point(434, 69);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(69, 25);
             this.button2.TabIndex = 14;
@@ -208,7 +211,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(33, 100);
+            this.label4.Location = new System.Drawing.Point(29, 147);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 20);
             this.label4.TabIndex = 8;
@@ -217,16 +220,17 @@
             // btnAddProduct
             // 
             this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddProduct.Location = new System.Drawing.Point(37, 194);
+            this.btnAddProduct.Location = new System.Drawing.Point(33, 241);
             this.btnAddProduct.Name = "btnAddProduct";
-            this.btnAddProduct.Size = new System.Drawing.Size(308, 38);
+            this.btnAddProduct.Size = new System.Drawing.Size(354, 38);
             this.btnAddProduct.TabIndex = 12;
             this.btnAddProduct.Text = "Add New Product";
             this.btnAddProduct.UseVisualStyleBackColor = true;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(234, 25);
+            this.txtName.Location = new System.Drawing.Point(230, 72);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(157, 20);
             this.txtName.TabIndex = 7;
@@ -235,7 +239,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(33, 137);
+            this.label3.Location = new System.Drawing.Point(29, 184);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(117, 20);
             this.label3.TabIndex = 2;
@@ -245,7 +249,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(33, 64);
+            this.label2.Location = new System.Drawing.Point(29, 111);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(139, 20);
             this.label2.TabIndex = 1;
@@ -255,7 +259,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(33, 25);
+            this.label1.Location = new System.Drawing.Point(29, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 20);
             this.label1.TabIndex = 0;
@@ -300,6 +304,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Descending";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -312,6 +317,7 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Ascending";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // label5
             // 
@@ -332,6 +338,7 @@
             this.button3.TabIndex = 6;
             this.button3.Text = "Reset";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // txtSearch
             // 
@@ -339,6 +346,7 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(157, 20);
             this.txtSearch.TabIndex = 1;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label6
             // 
@@ -538,6 +546,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.lblAddWarning);
             this.groupBox1.Controls.Add(this.btnSearch);
             this.groupBox1.Controls.Add(this.btnAdd);
             this.groupBox1.Controls.Add(this.btnUpdate);
@@ -585,7 +594,7 @@
             this.btnUpdate.BackColor = System.Drawing.Color.LightGray;
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(17, 139);
+            this.btnUpdate.Location = new System.Drawing.Point(17, 192);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(190, 38);
             this.btnUpdate.TabIndex = 1;
@@ -601,11 +610,11 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(17, 193);
+            this.btnDelete.Location = new System.Drawing.Point(17, 248);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(190, 39);
             this.btnDelete.TabIndex = 0;
-            this.btnDelete.Text = "DELETE";
+            this.btnDelete.Text = "REMOVE";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             this.btnDelete.MouseEnter += new System.EventHandler(this.btnDelete_MouseEnter);
@@ -615,6 +624,25 @@
             // 
             this.errorProviderPassword.ContainerControl = this;
             // 
+            // lblSlot
+            // 
+            this.lblSlot.AutoSize = true;
+            this.lblSlot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSlot.Location = new System.Drawing.Point(29, 37);
+            this.lblSlot.Name = "lblSlot";
+            this.lblSlot.Size = new System.Drawing.Size(422, 20);
+            this.lblSlot.TabIndex = 18;
+            this.lblSlot.Text = "Machine Slot that Product will be added is in Machine Slot: ";
+            // 
+            // lblAddWarning
+            // 
+            this.lblAddWarning.AutoSize = true;
+            this.lblAddWarning.Location = new System.Drawing.Point(17, 134);
+            this.lblAddWarning.Name = "lblAddWarning";
+            this.lblAddWarning.Size = new System.Drawing.Size(10, 13);
+            this.lblAddWarning.TabIndex = 4;
+            this.lblAddWarning.Text = ".";
+            // 
             // frmStockItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -622,10 +650,10 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources.MaintainStock;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1050, 667);
-            this.Controls.Add(this.grpDelete);
-            this.Controls.Add(this.grpUpdate);
-            this.Controls.Add(this.grpSearch);
             this.Controls.Add(this.grpAdd);
+            this.Controls.Add(this.grpDelete);
+            this.Controls.Add(this.grpSearch);
+            this.Controls.Add(this.grpUpdate);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
@@ -654,6 +682,7 @@
             this.grpDelete.ResumeLayout(false);
             this.grpDelete.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();
             this.ResumeLayout(false);
 
@@ -708,5 +737,7 @@
         private System.Windows.Forms.NumericUpDown spnUpdatePrice;
         private System.Windows.Forms.NumericUpDown spnUpdateQuantity;
         private System.Windows.Forms.ErrorProvider errorProviderPassword;
+        private System.Windows.Forms.Label lblSlot;
+        private System.Windows.Forms.Label lblAddWarning;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Vendlism
 {
@@ -29,7 +30,7 @@ namespace Vendlism
         {
             conn = new SqlConnection(connectionString);
 
-            loadDB("SELECT * FROM tblProduct");
+            loadDB("SELECT * FROM tblProduct ORDER BY Machine_Slot ASC");
             loadCMB("cmbDelete");
             loadCMB("cmbUpdate");
 
@@ -43,7 +44,20 @@ namespace Vendlism
             grpUpdate.Location = point;
 
             // MessageBox.Show(countProducts().ToString());
-           // int empty = getEmpty();
+          //  MessageBox.Show(getEmpty());
+
+            if (countProducts() == 9)
+            {
+                lblAddWarning.Text = "All Machine Slots are occupied.\nRemove a product first in order to add\nnew product.";
+                btnAdd.Enabled = false;
+            }
+            else
+            {
+                int avail = getCountEmpty();
+
+                lblAddWarning.Text = "There are "+ avail.ToString()+" Machine Slots are available\nto add a new product.";
+                btnAdd.Enabled = true;
+            }
 
         }
 
@@ -170,7 +184,7 @@ namespace Vendlism
             return count;
         }
 
-        public string getEmpty()
+        public int getEmpty()
         {
          //   int empty = 0;
 
@@ -199,9 +213,57 @@ namespace Vendlism
                 }
             }
 
-        //    MessageBox.Show("sMissing: "+sMissing);
+            if (sMissing.Length != 0)
+            {
+                int missing = int.Parse(sMissing.Substring(0, 1));
 
-            return sOutput;
+                //   MessageBox.Show("sMissing FIRST INDEX: " + missing.ToString());
+
+                return missing;
+            }
+            else
+            {
+                return 0;
+            }
+
+            
+        }
+
+        public int getCountEmpty()
+        {
+            //   int empty = 0;
+
+            conn.Open();
+            string sql = $"SELECT * FROM tblProduct";
+            command = new SqlCommand(sql, conn);
+            reader = command.ExecuteReader();
+
+            string sOutput = "";
+
+            while (reader.Read())
+            {
+                sOutput = sOutput + (reader.GetValue(5)).ToString();
+            }
+            conn.Close();
+
+            //            MessageBox.Show("sOutput: "+sOutput);
+
+            string sMissing = "";
+
+            for (int i = 1; i < 10; i++)
+            {
+                if (!sOutput.Contains(i.ToString()))
+                {
+                    sMissing = sMissing + i.ToString();
+                }
+            }
+
+
+            int missing = sMissing.Length;
+
+           
+
+            return missing;
 
 
         }
@@ -276,6 +338,8 @@ namespace Vendlism
             grpDelete.Visible = false;
             grpUpdate.Visible = false;
 
+            lblSlot.Text = "Machine Slot that Product will be added is in Machine Slot: "+ getEmpty().ToString();
+
             spnPrice.Value = 0;
             spnQuantity.Value = 0;
         }
@@ -339,7 +403,7 @@ namespace Vendlism
                         loadCMB("cmbUpdate");
 
                         //REFRESH DATAGRIDVIEW
-                        loadDB("SELECT * FROM tblProduct");
+                        loadDB("SELECT * FROM tblProduct ORDER BY Machine_Slot ASC");
 
                         //Success message
                         MessageBox.Show("Product Deleted Successfully");
@@ -347,6 +411,13 @@ namespace Vendlism
                         //clear textbox and combobox
                         lblDeletePK.Text = "";
                         cmbDelete.SelectedIndex = -1;
+
+                        //Update number of slots available
+                        int avail = getCountEmpty();
+
+                        lblAddWarning.Text = "There are " + avail.ToString() + " Machine Slots are available\nto add a new product.";
+                        btnAdd.Enabled = true;
+
                     }
                     else
                     {
@@ -390,6 +461,115 @@ namespace Vendlism
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            loadDB("SELECT * FROM tblProduct WHERE Product_Name LIKE  '%" + txtSearch.Text + "%'");
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+             //   loadDB("SELECT * FROM tblProduct WHERE Product_Name LIKE  '%" + txtSearch.Text + "%' AND Supplier_Address LIKE '%Potchefstroom%' ORDER BY Supplier_Name ASC");
+            }
+            else
+            {
+                loadDB("SELECT * FROM tblProduct WHERE Product_Name LIKE  '%" + txtSearch.Text + "%' ORDER BY Product_Name ASC");
+            }
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+             //   loadDB("SELECT * FROM tblSupplier WHERE Supplier_Name LIKE  '%" + txtSearch.Text + "%' AND Supplier_Address LIKE '%Potchefstroom%' ORDER BY Supplier_Name DESC");
+            }
+            else
+            {
+                loadDB("SELECT * FROM tblProduct WHERE Product_Name LIKE  '%" + txtSearch.Text + "%' ORDER BY Product_Name DESC");
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            txtSearch.Text = "";
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            checkBox1.Checked = false;
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            string name = txtName.Text;
+            int quantity = Convert.ToInt32(spnQuantity.Value); 
+            int price = Convert.ToInt32(spnPrice.Value);
+
+            // Retrieve the text entered by the user in textBox1
+            string productID = getEmpty().ToString();
+
+            // Open a file dialog to select an image
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image Files (*.png, *.jpg, *.jpeg, *.gif, *.bmp)|*.png;*.jpg;*.jpeg;*.gif;*.bmp";
+            openFileDialog.Title = "Select an Image";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Retrieve the selected image file path
+                string imagePath = openFileDialog.FileName;
+
+                // Insert the image into the "image" field in tblProduct
+                
+                    if (conn.State == ConnectionState.Closed)
+                    {
+                        conn.Open();
+                    }
+
+            //    $"INSERT INTO tblVehicles(vin_number, brand) VALUES( {iNumber},'{sBrand}')"
+
+                        // Update the "image" field for the specified product
+                        string updateQuery = $"INSERT INTO tblProduct (Product_Name,Quantity_Available,Selling_Price,Product_Image,Machine_Slot) VALUES (@name,@quantity,@price,@image,@productID)";
+             //   "INSERT INTO dbo.SMS_PW (id,username,password,email) VALUES (@id, @username, @password, @email)";
+                SqlCommand updateCommand = new SqlCommand(updateQuery, conn);
+                    updateCommand.Parameters.AddWithValue("@name", name);
+                    updateCommand.Parameters.AddWithValue("@quantity", quantity);
+                    updateCommand.Parameters.AddWithValue("@price", price);
+                    updateCommand.Parameters.AddWithValue("@image", File.ReadAllBytes(imagePath));
+                updateCommand.Parameters.AddWithValue("@productID", productID);
+                updateCommand.ExecuteNonQuery();
+                conn.Close();
+
+                MessageBox.Show("New Product added successfully");
+                    loadDB("SELECT * FROM tblProduct ORDER BY Machine_Slot ASC");
+                    loadCMB("cmbDelete");
+                    loadCMB("cmbUpdate");
+
+                if (countProducts() == 9)
+                {
+                    grpAdd.Visible = false;
+                    grpDelete.Visible = false;
+                    grpSearch.Visible = true;
+                    grpUpdate.Visible = false;
+                    lblAddWarning.Text = "All Machine Slots are occupied.\nRemove a product first in order to add\nnew product.";
+                    btnAdd.Enabled = false;
+                    
+
+                }
+                else
+                {
+                    int avail = getCountEmpty();
+
+                    lblAddWarning.Text = "There are " + avail.ToString() + " Machine Slots are available\nto add a new product.";
+                    btnAdd.Enabled = true;
+                }
+                lblSlot.Text = "Machine Slot that Product will be added is in Machine Slot: " + getEmpty().ToString();
+
+               
+                
+            }
+
+
         }
     }
 }

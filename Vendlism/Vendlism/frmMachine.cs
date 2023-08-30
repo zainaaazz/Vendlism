@@ -49,7 +49,7 @@ namespace Vendlism
             }
             conn.Close();
 
-            MessageBox.Show("sOutput: " + sOutput);
+          //  MessageBox.Show("sOutput: " + sOutput);
 
             string sMissing = "";
 
@@ -61,7 +61,7 @@ namespace Vendlism
                 }
             }
 
-            MessageBox.Show("sMissing: " + sMissing);
+           // MessageBox.Show("sMissing: " + sMissing);
 
             return sOutput;
 
