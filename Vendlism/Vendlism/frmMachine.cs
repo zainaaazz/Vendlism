@@ -32,7 +32,41 @@ namespace Vendlism
             InitializeComponent();
         }
 
+        public string getList()
+        {
+            //   int empty = 0;
 
+            conn.Open();
+            string sql = $"SELECT * FROM tblProduct";
+            command = new SqlCommand(sql, conn);
+            reader = command.ExecuteReader();
+
+            string sOutput = "";
+
+            while (reader.Read())
+            {
+                sOutput = sOutput + (reader.GetValue(5)).ToString();
+            }
+            conn.Close();
+
+            MessageBox.Show("sOutput: " + sOutput);
+
+            string sMissing = "";
+
+            for (int i = 1; i < 10; i++)
+            {
+                if (!sOutput.Contains(i.ToString()))
+                {
+                    sMissing = sMissing + i.ToString();
+                }
+            }
+
+            MessageBox.Show("sMissing: " + sMissing);
+
+            return sOutput;
+
+
+        }
 
         private void frmMachine_Load(object sender, EventArgs e)
         {
@@ -55,7 +89,7 @@ namespace Vendlism
                     {
                         conn.Open();
                     }
-                    string sql = $"SELECT * FROM tblProduct WHERE Product_ID = " + i;
+                    string sql = $"SELECT * FROM tblProduct WHERE Machine_Slot = " + i;
                     command = new SqlCommand(sql, conn);
                     reader = command.ExecuteReader();
 
@@ -79,14 +113,19 @@ namespace Vendlism
                 }
             }
 
-            for (int i = 1; i <= 9; i++)
+
+            string sOutput = getList();
+
+            foreach (char symbol in sOutput)
             {
+                int i = symbol - '0';
+
                 string pictureBoxName = "imgProduct" + i.ToString();
                 PictureBox pictureBox = Controls.Find(pictureBoxName, true).FirstOrDefault() as PictureBox;
 
                 if (pictureBox != null)
                 {
-                    // Fetch the image data from the database for the corresponding Product_ID
+                    // Fetch the image data from the database for the corresponding Machine_Slot
                     byte[] imageData = GetImageDataFromDatabase(i);
 
                     // Convert the byte array to an Image object
@@ -103,7 +142,8 @@ namespace Vendlism
                     // For this example, we'll simply print a message to the console.
                     Console.WriteLine("PictureBox " + pictureBoxName + " not found.");
                 }
-            }
+
+            }      
 
             if (conn.State == ConnectionState.Closed)
             {
@@ -145,14 +185,14 @@ namespace Vendlism
                     }
 
                     // Check if the product exists in the database
-                    string checkProductQuery = $"SELECT COUNT(*) FROM tblProduct WHERE Product_ID = '{productID}'";
+                    string checkProductQuery = $"SELECT COUNT(*) FROM tblProduct WHERE Machine_Slot = '{productID}'";
                     SqlCommand checkProductCommand = new SqlCommand(checkProductQuery, conn);
                     int productCount = Convert.ToInt32(checkProductCommand.ExecuteScalar());
 
                     if (productCount > 0)
                     {
                         // Update the "image" field for the specified product
-                        string updateQuery = $"UPDATE tblProduct SET Product_Image = @image WHERE Product_ID = '{productID}'";
+                        string updateQuery = $"UPDATE tblProduct SET Product_Image = @image WHERE Machine_Slot = '{productID}'";
                         SqlCommand updateCommand = new SqlCommand(updateQuery, conn);
                         updateCommand.Parameters.AddWithValue("@image", File.ReadAllBytes(imagePath));
                         updateCommand.ExecuteNonQuery();
@@ -183,7 +223,7 @@ namespace Vendlism
                 conn.Open();
             }
             // Create a SqlCommand to fetch the image data from the database
-            using (SqlCommand command = new SqlCommand("SELECT Product_Image FROM tblProduct WHERE Product_ID = @ProductId", conn))
+            using (SqlCommand command = new SqlCommand("SELECT Product_Image FROM tblProduct WHERE Machine_Slot = @ProductId", conn))
             {
                 command.Parameters.AddWithValue("@ProductId", productId);
 
@@ -401,7 +441,7 @@ namespace Vendlism
             {
                 conn.Open();
             }
-            string sql = $"SELECT * FROM tblProduct WHERE Product_ID = " + i;
+            string sql = $"SELECT * FROM tblProduct WHERE Machine_Slot = " + i;
             command = new SqlCommand(sql, conn);
             reader = command.ExecuteReader();
 

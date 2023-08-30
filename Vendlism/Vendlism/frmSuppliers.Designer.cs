@@ -529,9 +529,10 @@
             // cbPotch
             // 
             this.cbPotch.AutoSize = true;
+            this.cbPotch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPotch.Location = new System.Drawing.Point(245, 73);
             this.cbPotch.Name = "cbPotch";
-            this.cbPotch.Size = new System.Drawing.Size(133, 17);
+            this.cbPotch.Size = new System.Drawing.Size(171, 21);
             this.cbPotch.TabIndex = 10;
             this.cbPotch.Text = "Suppliers in Potch only";
             this.cbPotch.UseVisualStyleBackColor = true;
@@ -623,10 +624,10 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources.MaintainSuppliers;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1046, 649);
-            this.Controls.Add(this.grpAdd);
-            this.Controls.Add(this.grpSearch);
-            this.Controls.Add(this.grpUpdate);
             this.Controls.Add(this.grpDelete);
+            this.Controls.Add(this.grpSearch);
+            this.Controls.Add(this.grpAdd);
+            this.Controls.Add(this.grpUpdate);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
