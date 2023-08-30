@@ -727,8 +727,8 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources.MaintainUsers;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1062, 688);
-            this.Controls.Add(this.grpUpdate);
             this.Controls.Add(this.grpAdd);
+            this.Controls.Add(this.grpUpdate);
             this.Controls.Add(this.grpDelete);
             this.Controls.Add(this.grpSearch);
             this.Controls.Add(this.pictureBox2);

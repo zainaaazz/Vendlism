@@ -26,6 +26,16 @@ namespace Vendlism
             InitializeComponent();
         }
 
+        private Image ByteArrayToImage(byte[] byteArray)
+        {
+            using (MemoryStream memoryStream = new MemoryStream(byteArray))
+            {
+                return Image.FromStream(memoryStream);
+            }
+        }
+
+     
+
         private void frmStockItems_Load(object sender, EventArgs e)
         {
             conn = new SqlConnection(connectionString);
@@ -349,16 +359,24 @@ namespace Vendlism
             //  txtUpdateEmail.Text = "";
             //   txtUpdatePhone.Text = "";
 
-            spnUpdateQuantity.Value = 0;
-            spnUpdatePrice.Value = 0;
+            try
+            {
+                spnUpdateQuantity.Value = 0;
+                spnUpdatePrice.Value = 0;
 
-            lblPK.Text = "";
-            cmbUpdate.SelectedIndex = -1;
+                lblPK.Text = "";
+                cmbUpdate.SelectedIndex = -1;
 
-            grpUpdate.Visible = true;
-            grpAdd.Visible = false;
-            grpSearch.Visible = false;
-            grpDelete.Visible = false;
+                grpUpdate.Visible = true;
+                grpAdd.Visible = false;
+                grpSearch.Visible = false;
+                grpDelete.Visible = false;
+            }
+            catch (OutOfMemoryException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+          
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -525,22 +543,18 @@ namespace Vendlism
                     {
                         conn.Open();
                     }
-
-            //    $"INSERT INTO tblVehicles(vin_number, brand) VALUES( {iNumber},'{sBrand}')"
-
-                        // Update the "image" field for the specified product
-                        string updateQuery = $"INSERT INTO tblProduct (Product_Name,Quantity_Available,Selling_Price,Product_Image,Machine_Slot) VALUES (@name,@quantity,@price,@image,@productID)";
-             //   "INSERT INTO dbo.SMS_PW (id,username,password,email) VALUES (@id, @username, @password, @email)";
-                SqlCommand updateCommand = new SqlCommand(updateQuery, conn);
+                    string updateQuery = $"INSERT INTO tblProduct (Product_Name,Quantity_Available,Selling_Price,Product_Image,Machine_Slot) VALUES (@name,@quantity,@price,@image,@productID)";
+           
+                    SqlCommand updateCommand = new SqlCommand(updateQuery, conn);
                     updateCommand.Parameters.AddWithValue("@name", name);
                     updateCommand.Parameters.AddWithValue("@quantity", quantity);
                     updateCommand.Parameters.AddWithValue("@price", price);
                     updateCommand.Parameters.AddWithValue("@image", File.ReadAllBytes(imagePath));
-                updateCommand.Parameters.AddWithValue("@productID", productID);
-                updateCommand.ExecuteNonQuery();
-                conn.Close();
+                    updateCommand.Parameters.AddWithValue("@productID", productID);
+                    updateCommand.ExecuteNonQuery();
+                    conn.Close();
 
-                MessageBox.Show("New Product added successfully");
+                    MessageBox.Show("New Product added successfully");
                     loadDB("SELECT * FROM tblProduct ORDER BY Machine_Slot ASC");
                     loadCMB("cmbDelete");
                     loadCMB("cmbUpdate");
@@ -553,22 +567,71 @@ namespace Vendlism
                     grpUpdate.Visible = false;
                     lblAddWarning.Text = "All Machine Slots are occupied.\nRemove a product first in order to add\nnew product.";
                     btnAdd.Enabled = false;
-                    
-
                 }
                 else
                 {
                     int avail = getCountEmpty();
-
                     lblAddWarning.Text = "There are " + avail.ToString() + " Machine Slots are available\nto add a new product.";
                     btnAdd.Enabled = true;
                 }
                 lblSlot.Text = "Machine Slot that Product will be added is in Machine Slot: " + getEmpty().ToString();
-
-               
-                
             }
 
+        }
+
+        private void cmbUpdate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+              //  oldName = cmbUpdate.Text;
+
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+                string sql = $"SELECT * FROM tblProduct";
+                command = new SqlCommand(sql, conn);
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    if (reader.GetValue(1).ToString() == cmbUpdate.Text)
+                    {
+                        lblPK.Text = reader.GetValue(0).ToString();
+                        //  txtUpdateName.Text = reader.GetValue(2).ToString();
+                        // txtUpdatePhone.Text = reader.GetValue(3).ToString();
+                        // txtUpdateAddress.Text = reader.GetValue(4).ToString();
+
+                        spnUpdateQuantity.Value = Convert.ToInt32(reader.GetValue(2));
+                        spnUpdatePrice.Value = Convert.ToInt32(reader.GetValue(3));
+                        lblUpdateSlot.Text = reader.GetValue(5).ToString();
+
+                        byte[] imageData = (byte[])reader[4];
+                        //byte[] imageData = GetImageDataFromDatabase(Convert.ToInt32(reader.GetValue(5)));
+
+                        // Convert the byte array to an Image object
+                        Image image = ByteArrayToImage(imageData);
+
+                        // Display the image in the PictureBox
+                        imgUpdate.BackgroundImage = image;
+
+                    }
+                }
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+           
+            catch (OutOfMemoryException exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void btnUpdateSupplier_Click(object sender, EventArgs e)
+        {
 
         }
     }

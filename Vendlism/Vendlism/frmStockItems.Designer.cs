@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -79,6 +79,10 @@
             this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblSlot = new System.Windows.Forms.Label();
             this.lblAddWarning = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.imgUpdate = new System.Windows.Forms.PictureBox();
+            this.lblUpdateSlot = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -93,6 +97,7 @@
             this.grpDelete.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUpdate)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox2
@@ -137,14 +142,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(31, 117);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -166,7 +171,7 @@
             this.grpAdd.Controls.Add(this.label3);
             this.grpAdd.Controls.Add(this.label2);
             this.grpAdd.Controls.Add(this.label1);
-            this.grpAdd.Location = new System.Drawing.Point(376, 272);
+            this.grpAdd.Location = new System.Drawing.Point(576, 264);
             this.grpAdd.Name = "grpAdd";
             this.grpAdd.Size = new System.Drawing.Size(754, 303);
             this.grpAdd.TabIndex = 107;
@@ -275,7 +280,7 @@
             this.grpSearch.Controls.Add(this.txtSearch);
             this.grpSearch.Controls.Add(this.label6);
             this.grpSearch.Controls.Add(this.label8);
-            this.grpSearch.Location = new System.Drawing.Point(286, 311);
+            this.grpSearch.Location = new System.Drawing.Point(453, 283);
             this.grpSearch.Name = "grpSearch";
             this.grpSearch.Size = new System.Drawing.Size(754, 303);
             this.grpSearch.TabIndex = 109;
@@ -370,6 +375,10 @@
             // 
             // grpUpdate
             // 
+            this.grpUpdate.Controls.Add(this.lblUpdateSlot);
+            this.grpUpdate.Controls.Add(this.label16);
+            this.grpUpdate.Controls.Add(this.imgUpdate);
+            this.grpUpdate.Controls.Add(this.button1);
             this.grpUpdate.Controls.Add(this.spnUpdatePrice);
             this.grpUpdate.Controls.Add(this.spnUpdateQuantity);
             this.grpUpdate.Controls.Add(this.label13);
@@ -380,7 +389,7 @@
             this.grpUpdate.Controls.Add(this.label10);
             this.grpUpdate.Controls.Add(this.label11);
             this.grpUpdate.Controls.Add(this.cmbUpdate);
-            this.grpUpdate.Location = new System.Drawing.Point(264, 332);
+            this.grpUpdate.Location = new System.Drawing.Point(264, 266);
             this.grpUpdate.Name = "grpUpdate";
             this.grpUpdate.Size = new System.Drawing.Size(754, 303);
             this.grpUpdate.TabIndex = 108;
@@ -390,23 +399,23 @@
             // 
             // spnUpdatePrice
             // 
-            this.spnUpdatePrice.Location = new System.Drawing.Point(231, 134);
+            this.spnUpdatePrice.Location = new System.Drawing.Point(241, 164);
             this.spnUpdatePrice.Name = "spnUpdatePrice";
-            this.spnUpdatePrice.Size = new System.Drawing.Size(120, 20);
+            this.spnUpdatePrice.Size = new System.Drawing.Size(157, 20);
             this.spnUpdatePrice.TabIndex = 33;
             // 
             // spnUpdateQuantity
             // 
-            this.spnUpdateQuantity.Location = new System.Drawing.Point(231, 96);
+            this.spnUpdateQuantity.Location = new System.Drawing.Point(241, 126);
             this.spnUpdateQuantity.Name = "spnUpdateQuantity";
-            this.spnUpdateQuantity.Size = new System.Drawing.Size(120, 20);
+            this.spnUpdateQuantity.Size = new System.Drawing.Size(157, 20);
             this.spnUpdateQuantity.TabIndex = 32;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(33, 168);
+            this.label13.Location = new System.Drawing.Point(43, 198);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(117, 20);
             this.label13.TabIndex = 29;
@@ -415,7 +424,7 @@
             // lblPK
             // 
             this.lblPK.AutoSize = true;
-            this.lblPK.Location = new System.Drawing.Point(232, 32);
+            this.lblPK.Location = new System.Drawing.Point(241, 29);
             this.lblPK.Name = "lblPK";
             this.lblPK.Size = new System.Drawing.Size(10, 13);
             this.lblPK.TabIndex = 28;
@@ -425,7 +434,7 @@
             // 
             this.lblPrimaryKey.AutoSize = true;
             this.lblPrimaryKey.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrimaryKey.Location = new System.Drawing.Point(33, 27);
+            this.lblPrimaryKey.Location = new System.Drawing.Point(43, 25);
             this.lblPrimaryKey.Name = "lblPrimaryKey";
             this.lblPrimaryKey.Size = new System.Drawing.Size(89, 20);
             this.lblPrimaryKey.TabIndex = 27;
@@ -434,18 +443,19 @@
             // btnUpdateSupplier
             // 
             this.btnUpdateSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateSupplier.Location = new System.Drawing.Point(37, 205);
+            this.btnUpdateSupplier.Location = new System.Drawing.Point(39, 257);
             this.btnUpdateSupplier.Name = "btnUpdateSupplier";
             this.btnUpdateSupplier.Size = new System.Drawing.Size(351, 38);
             this.btnUpdateSupplier.TabIndex = 19;
             this.btnUpdateSupplier.Text = "Update Product";
             this.btnUpdateSupplier.UseVisualStyleBackColor = true;
+            this.btnUpdateSupplier.Click += new System.EventHandler(this.btnUpdateSupplier_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(33, 130);
+            this.label9.Location = new System.Drawing.Point(43, 160);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(99, 20);
             this.label9.TabIndex = 16;
@@ -455,7 +465,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(33, 93);
+            this.label10.Location = new System.Drawing.Point(43, 123);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(139, 20);
             this.label10.TabIndex = 15;
@@ -465,7 +475,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(33, 57);
+            this.label11.Location = new System.Drawing.Point(43, 87);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(114, 20);
             this.label11.TabIndex = 14;
@@ -474,10 +484,11 @@
             // cmbUpdate
             // 
             this.cmbUpdate.FormattingEnabled = true;
-            this.cmbUpdate.Location = new System.Drawing.Point(231, 59);
+            this.cmbUpdate.Location = new System.Drawing.Point(241, 89);
             this.cmbUpdate.Name = "cmbUpdate";
             this.cmbUpdate.Size = new System.Drawing.Size(157, 21);
             this.cmbUpdate.TabIndex = 15;
+            this.cmbUpdate.SelectedIndexChanged += new System.EventHandler(this.cmbUpdate_SelectedIndexChanged);
             // 
             // grpDelete
             // 
@@ -486,7 +497,7 @@
             this.grpDelete.Controls.Add(this.cmbDelete);
             this.grpDelete.Controls.Add(this.btnDeleteProduct);
             this.grpDelete.Controls.Add(this.label7);
-            this.grpDelete.Location = new System.Drawing.Point(323, 291);
+            this.grpDelete.Location = new System.Drawing.Point(499, 272);
             this.grpDelete.Name = "grpDelete";
             this.grpDelete.Size = new System.Drawing.Size(754, 303);
             this.grpDelete.TabIndex = 110;
@@ -643,6 +654,42 @@
             this.lblAddWarning.TabIndex = 4;
             this.lblAddWarning.Text = ".";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(323, 198);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 50);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "Update Image";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // imgUpdate
+            // 
+            this.imgUpdate.Location = new System.Drawing.Point(241, 198);
+            this.imgUpdate.Name = "imgUpdate";
+            this.imgUpdate.Size = new System.Drawing.Size(54, 50);
+            this.imgUpdate.TabIndex = 35;
+            this.imgUpdate.TabStop = false;
+            // 
+            // lblUpdateSlot
+            // 
+            this.lblUpdateSlot.AutoSize = true;
+            this.lblUpdateSlot.Location = new System.Drawing.Point(241, 59);
+            this.lblUpdateSlot.Name = "lblUpdateSlot";
+            this.lblUpdateSlot.Size = new System.Drawing.Size(10, 13);
+            this.lblUpdateSlot.TabIndex = 37;
+            this.lblUpdateSlot.Text = ".";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(43, 56);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(105, 20);
+            this.label16.TabIndex = 36;
+            this.label16.Text = "Machine Slot:";
+            // 
             // frmStockItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -650,10 +697,10 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources.MaintainStock;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1050, 667);
+            this.Controls.Add(this.grpUpdate);
             this.Controls.Add(this.grpAdd);
             this.Controls.Add(this.grpDelete);
             this.Controls.Add(this.grpSearch);
-            this.Controls.Add(this.grpUpdate);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
@@ -684,6 +731,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUpdate)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -739,5 +787,9 @@
         private System.Windows.Forms.ErrorProvider errorProviderPassword;
         private System.Windows.Forms.Label lblSlot;
         private System.Windows.Forms.Label lblAddWarning;
+        private System.Windows.Forms.PictureBox imgUpdate;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblUpdateSlot;
+        private System.Windows.Forms.Label label16;
     }
 }
