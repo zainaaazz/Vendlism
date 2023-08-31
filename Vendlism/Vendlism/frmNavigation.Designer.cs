@@ -28,88 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnUsers = new System.Windows.Forms.Button();
+            this.btnSuppliers = new System.Windows.Forms.Button();
+            this.btnProducts = new System.Windows.Forms.Button();
+            this.btnReports = new System.Windows.Forms.Button();
+            this.btnOrders = new System.Windows.Forms.Button();
+            this.lblAdmin = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // btnSearch
+            // btnUsers
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.LightGray;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(32, 99);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(384, 39);
-            this.btnSearch.TabIndex = 7;
-            this.btnSearch.Text = "MAINTAIN USERS";
-            this.btnSearch.UseVisualStyleBackColor = false;
+            this.btnUsers.BackColor = System.Drawing.Color.LightGray;
+            this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsers.Location = new System.Drawing.Point(32, 99);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Size = new System.Drawing.Size(384, 39);
+            this.btnUsers.TabIndex = 7;
+            this.btnUsers.Text = "MAINTAIN USERS";
+            this.btnUsers.UseVisualStyleBackColor = false;
+            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
+            this.btnUsers.MouseEnter += new System.EventHandler(this.btnUsers_MouseEnter);
+            this.btnUsers.MouseLeave += new System.EventHandler(this.btnUsers_MouseLeave);
             // 
-            // btnAdd
+            // btnSuppliers
             // 
-            this.btnAdd.BackColor = System.Drawing.Color.LightGray;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(32, 144);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(384, 39);
-            this.btnAdd.TabIndex = 6;
-            this.btnAdd.Text = "MAINTAIN SUPPLIERS";
-            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnSuppliers.BackColor = System.Drawing.Color.LightGray;
+            this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSuppliers.Location = new System.Drawing.Point(32, 156);
+            this.btnSuppliers.Name = "btnSuppliers";
+            this.btnSuppliers.Size = new System.Drawing.Size(384, 39);
+            this.btnSuppliers.TabIndex = 6;
+            this.btnSuppliers.Text = "MAINTAIN SUPPLIERS";
+            this.btnSuppliers.UseVisualStyleBackColor = false;
+            this.btnSuppliers.MouseEnter += new System.EventHandler(this.btnSuppliers_MouseEnter);
+            this.btnSuppliers.MouseLeave += new System.EventHandler(this.btnSuppliers_MouseLeave);
             // 
-            // btnUpdate
+            // btnProducts
             // 
-            this.btnUpdate.BackColor = System.Drawing.Color.LightGray;
-            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(32, 200);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(384, 38);
-            this.btnUpdate.TabIndex = 5;
-            this.btnUpdate.Text = "MAINTAIN STOCK ITEMS";
-            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnProducts.BackColor = System.Drawing.Color.LightGray;
+            this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProducts.Location = new System.Drawing.Point(32, 216);
+            this.btnProducts.Name = "btnProducts";
+            this.btnProducts.Size = new System.Drawing.Size(384, 38);
+            this.btnProducts.TabIndex = 5;
+            this.btnProducts.Text = "MAINTAIN PRODUCTS";
+            this.btnProducts.UseVisualStyleBackColor = false;
+            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
+            this.btnProducts.MouseEnter += new System.EventHandler(this.btnProducts_MouseEnter);
+            this.btnProducts.MouseLeave += new System.EventHandler(this.btnProducts_MouseLeave);
             // 
-            // btnDelete
+            // btnReports
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.LightGray;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.Black;
-            this.btnDelete.Location = new System.Drawing.Point(32, 356);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(384, 39);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "REQUEST REPORTS";
-            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnReports.BackColor = System.Drawing.Color.LightGray;
+            this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReports.ForeColor = System.Drawing.Color.Black;
+            this.btnReports.Location = new System.Drawing.Point(32, 354);
+            this.btnReports.Name = "btnReports";
+            this.btnReports.Size = new System.Drawing.Size(384, 39);
+            this.btnReports.TabIndex = 4;
+            this.btnReports.Text = "REQUEST REPORTS";
+            this.btnReports.UseVisualStyleBackColor = false;
+            this.btnReports.MouseEnter += new System.EventHandler(this.btnReports_MouseEnter);
+            this.btnReports.MouseLeave += new System.EventHandler(this.btnReports_MouseLeave);
             // 
-            // button1
+            // btnOrders
             // 
-            this.button1.BackColor = System.Drawing.Color.LightGray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(32, 244);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(384, 39);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "PLACE ORDERS FOR STOCK";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnOrders.BackColor = System.Drawing.Color.LightGray;
+            this.btnOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOrders.ForeColor = System.Drawing.Color.Black;
+            this.btnOrders.Location = new System.Drawing.Point(32, 274);
+            this.btnOrders.Name = "btnOrders";
+            this.btnOrders.Size = new System.Drawing.Size(384, 39);
+            this.btnOrders.TabIndex = 8;
+            this.btnOrders.Text = "MANAGE PLACED ORDERS";
+            this.btnOrders.UseVisualStyleBackColor = false;
+            this.btnOrders.MouseEnter += new System.EventHandler(this.btnOrders_MouseEnter);
+            this.btnOrders.MouseLeave += new System.EventHandler(this.btnOrders_MouseLeave);
             // 
-            // button2
+            // lblAdmin
             // 
-            this.button2.BackColor = System.Drawing.Color.LightGray;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(32, 311);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(384, 39);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "RECEIVE ORDERS FOR STOCK";
-            this.button2.UseVisualStyleBackColor = false;
+            this.lblAdmin.AutoSize = true;
+            this.lblAdmin.Location = new System.Drawing.Point(335, 42);
+            this.lblAdmin.Name = "lblAdmin";
+            this.lblAdmin.Size = new System.Drawing.Size(35, 13);
+            this.lblAdmin.TabIndex = 9;
+            this.lblAdmin.Text = "label1";
+            this.lblAdmin.Visible = false;
             // 
             // frmNavigation
             // 
@@ -118,26 +127,29 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources.NAVIGATION;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(446, 499);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.lblAdmin);
+            this.Controls.Add(this.btnOrders);
+            this.Controls.Add(this.btnUsers);
+            this.Controls.Add(this.btnSuppliers);
+            this.Controls.Add(this.btnProducts);
+            this.Controls.Add(this.btnReports);
             this.DoubleBuffered = true;
             this.Name = "frmNavigation";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmNavigation";
+            this.Load += new System.EventHandler(this.frmNavigation_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        public System.Windows.Forms.Button btnUsers;
+        public System.Windows.Forms.Button btnSuppliers;
+        public System.Windows.Forms.Button btnProducts;
+        public System.Windows.Forms.Button btnReports;
+        public System.Windows.Forms.Button btnOrders;
+        public System.Windows.Forms.Label lblAdmin;
     }
 }

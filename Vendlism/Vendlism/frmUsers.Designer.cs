@@ -206,7 +206,7 @@
             this.grpAdd.Controls.Add(this.label3);
             this.grpAdd.Controls.Add(this.label2);
             this.grpAdd.Controls.Add(this.label1);
-            this.grpAdd.Location = new System.Drawing.Point(372, 330);
+            this.grpAdd.Location = new System.Drawing.Point(645, 315);
             this.grpAdd.Name = "grpAdd";
             this.grpAdd.Size = new System.Drawing.Size(752, 250);
             this.grpAdd.TabIndex = 2;
@@ -385,7 +385,7 @@
             this.grpUpdate.Controls.Add(this.label10);
             this.grpUpdate.Controls.Add(this.label11);
             this.grpUpdate.Controls.Add(this.cmbUpdate);
-            this.grpUpdate.Location = new System.Drawing.Point(271, 347);
+            this.grpUpdate.Location = new System.Drawing.Point(277, 326);
             this.grpUpdate.Name = "grpUpdate";
             this.grpUpdate.Size = new System.Drawing.Size(741, 269);
             this.grpUpdate.TabIndex = 14;

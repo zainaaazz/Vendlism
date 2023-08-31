@@ -917,6 +917,10 @@ namespace Vendlism
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             //return to main homepage 
+            frmNavigation nav = new frmNavigation();
+            this.Hide();
+            nav.Show();
+
         }
 
         private void cmbUpdate_TextChanged(object sender, EventArgs e)

@@ -792,5 +792,12 @@ namespace Vendlism
                 loadDB("SELECT * FROM tblProduct WHERE Product_Name LIKE  '%" + txtSearch.Text + "%'");
             }
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            frmNavigation nav = new frmNavigation();
+            this.Hide();
+            nav.ShowDialog();
+        }
     }
 }
