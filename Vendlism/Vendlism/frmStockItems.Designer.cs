@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.grpAdd = new System.Windows.Forms.GroupBox();
+            this.lblSlot = new System.Windows.Forms.Label();
             this.spnQuantity = new System.Windows.Forms.NumericUpDown();
             this.spnPrice = new System.Windows.Forms.NumericUpDown();
             this.label14 = new System.Windows.Forms.Label();
@@ -55,12 +56,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.grpUpdate = new System.Windows.Forms.GroupBox();
+            this.lblUpdateSlot = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.imgUpdate = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.spnUpdatePrice = new System.Windows.Forms.NumericUpDown();
             this.spnUpdateQuantity = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
             this.lblPK = new System.Windows.Forms.Label();
             this.lblPrimaryKey = new System.Windows.Forms.Label();
-            this.btnUpdateSupplier = new System.Windows.Forms.Button();
+            this.btnUpdateProduct = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -72,17 +77,12 @@
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblAddWarning = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblSlot = new System.Windows.Forms.Label();
-            this.lblAddWarning = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.imgUpdate = new System.Windows.Forms.PictureBox();
-            this.lblUpdateSlot = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -92,12 +92,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.spnPrice)).BeginInit();
             this.grpSearch.SuspendLayout();
             this.grpUpdate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUpdate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnUpdatePrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnUpdateQuantity)).BeginInit();
             this.grpDelete.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgUpdate)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox2
@@ -142,14 +142,14 @@
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView1.Location = new System.Drawing.Point(31, 117);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -178,6 +178,16 @@
             this.grpAdd.TabStop = false;
             this.grpAdd.Text = "ADD STOCK ITEM";
             this.grpAdd.Visible = false;
+            // 
+            // lblSlot
+            // 
+            this.lblSlot.AutoSize = true;
+            this.lblSlot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSlot.Location = new System.Drawing.Point(29, 37);
+            this.lblSlot.Name = "lblSlot";
+            this.lblSlot.Size = new System.Drawing.Size(422, 20);
+            this.lblSlot.TabIndex = 18;
+            this.lblSlot.Text = "Machine Slot that Product will be added is in Machine Slot: ";
             // 
             // spnQuantity
             // 
@@ -211,6 +221,7 @@
             this.button2.TabIndex = 14;
             this.button2.Text = "Reset";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label4
             // 
@@ -297,6 +308,7 @@
             this.checkBox1.TabIndex = 10;
             this.checkBox1.Text = "Products where quantity available is less than 5";
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -384,18 +396,57 @@
             this.grpUpdate.Controls.Add(this.label13);
             this.grpUpdate.Controls.Add(this.lblPK);
             this.grpUpdate.Controls.Add(this.lblPrimaryKey);
-            this.grpUpdate.Controls.Add(this.btnUpdateSupplier);
+            this.grpUpdate.Controls.Add(this.btnUpdateProduct);
             this.grpUpdate.Controls.Add(this.label9);
             this.grpUpdate.Controls.Add(this.label10);
             this.grpUpdate.Controls.Add(this.label11);
             this.grpUpdate.Controls.Add(this.cmbUpdate);
-            this.grpUpdate.Location = new System.Drawing.Point(264, 266);
+            this.grpUpdate.Location = new System.Drawing.Point(313, 331);
             this.grpUpdate.Name = "grpUpdate";
             this.grpUpdate.Size = new System.Drawing.Size(754, 303);
             this.grpUpdate.TabIndex = 108;
             this.grpUpdate.TabStop = false;
             this.grpUpdate.Text = "UPDATE STOCK ITEM";
             this.grpUpdate.Visible = false;
+            // 
+            // lblUpdateSlot
+            // 
+            this.lblUpdateSlot.AutoSize = true;
+            this.lblUpdateSlot.Location = new System.Drawing.Point(241, 59);
+            this.lblUpdateSlot.Name = "lblUpdateSlot";
+            this.lblUpdateSlot.Size = new System.Drawing.Size(10, 13);
+            this.lblUpdateSlot.TabIndex = 37;
+            this.lblUpdateSlot.Text = ".";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(43, 56);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(105, 20);
+            this.label16.TabIndex = 36;
+            this.label16.Text = "Machine Slot:";
+            // 
+            // imgUpdate
+            // 
+            this.imgUpdate.BackColor = System.Drawing.Color.Transparent;
+            this.imgUpdate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.imgUpdate.Location = new System.Drawing.Point(241, 198);
+            this.imgUpdate.Name = "imgUpdate";
+            this.imgUpdate.Size = new System.Drawing.Size(54, 50);
+            this.imgUpdate.TabIndex = 35;
+            this.imgUpdate.TabStop = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(323, 198);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 50);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "Update Image";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // spnUpdatePrice
             // 
@@ -440,16 +491,16 @@
             this.lblPrimaryKey.TabIndex = 27;
             this.lblPrimaryKey.Text = "Product ID:";
             // 
-            // btnUpdateSupplier
+            // btnUpdateProduct
             // 
-            this.btnUpdateSupplier.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdateSupplier.Location = new System.Drawing.Point(39, 257);
-            this.btnUpdateSupplier.Name = "btnUpdateSupplier";
-            this.btnUpdateSupplier.Size = new System.Drawing.Size(351, 38);
-            this.btnUpdateSupplier.TabIndex = 19;
-            this.btnUpdateSupplier.Text = "Update Product";
-            this.btnUpdateSupplier.UseVisualStyleBackColor = true;
-            this.btnUpdateSupplier.Click += new System.EventHandler(this.btnUpdateSupplier_Click);
+            this.btnUpdateProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdateProduct.Location = new System.Drawing.Point(39, 257);
+            this.btnUpdateProduct.Name = "btnUpdateProduct";
+            this.btnUpdateProduct.Size = new System.Drawing.Size(351, 38);
+            this.btnUpdateProduct.TabIndex = 19;
+            this.btnUpdateProduct.Text = "Update Product";
+            this.btnUpdateProduct.UseVisualStyleBackColor = true;
+            this.btnUpdateProduct.Click += new System.EventHandler(this.btnUpdateProduct_Click);
             // 
             // label9
             // 
@@ -570,6 +621,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "MENU";
             // 
+            // lblAddWarning
+            // 
+            this.lblAddWarning.AutoSize = true;
+            this.lblAddWarning.Location = new System.Drawing.Point(17, 134);
+            this.lblAddWarning.Name = "lblAddWarning";
+            this.lblAddWarning.Size = new System.Drawing.Size(10, 13);
+            this.lblAddWarning.TabIndex = 4;
+            this.lblAddWarning.Text = ".";
+            // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.LightGray;
@@ -635,61 +695,6 @@
             // 
             this.errorProviderPassword.ContainerControl = this;
             // 
-            // lblSlot
-            // 
-            this.lblSlot.AutoSize = true;
-            this.lblSlot.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSlot.Location = new System.Drawing.Point(29, 37);
-            this.lblSlot.Name = "lblSlot";
-            this.lblSlot.Size = new System.Drawing.Size(422, 20);
-            this.lblSlot.TabIndex = 18;
-            this.lblSlot.Text = "Machine Slot that Product will be added is in Machine Slot: ";
-            // 
-            // lblAddWarning
-            // 
-            this.lblAddWarning.AutoSize = true;
-            this.lblAddWarning.Location = new System.Drawing.Point(17, 134);
-            this.lblAddWarning.Name = "lblAddWarning";
-            this.lblAddWarning.Size = new System.Drawing.Size(10, 13);
-            this.lblAddWarning.TabIndex = 4;
-            this.lblAddWarning.Text = ".";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(323, 198);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 50);
-            this.button1.TabIndex = 34;
-            this.button1.Text = "Update Image";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // imgUpdate
-            // 
-            this.imgUpdate.Location = new System.Drawing.Point(241, 198);
-            this.imgUpdate.Name = "imgUpdate";
-            this.imgUpdate.Size = new System.Drawing.Size(54, 50);
-            this.imgUpdate.TabIndex = 35;
-            this.imgUpdate.TabStop = false;
-            // 
-            // lblUpdateSlot
-            // 
-            this.lblUpdateSlot.AutoSize = true;
-            this.lblUpdateSlot.Location = new System.Drawing.Point(241, 59);
-            this.lblUpdateSlot.Name = "lblUpdateSlot";
-            this.lblUpdateSlot.Size = new System.Drawing.Size(10, 13);
-            this.lblUpdateSlot.TabIndex = 37;
-            this.lblUpdateSlot.Text = ".";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(43, 56);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(105, 20);
-            this.label16.TabIndex = 36;
-            this.label16.Text = "Machine Slot:";
-            // 
             // frmStockItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -697,10 +702,10 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources.MaintainStock;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1050, 667);
-            this.Controls.Add(this.grpUpdate);
-            this.Controls.Add(this.grpAdd);
-            this.Controls.Add(this.grpDelete);
             this.Controls.Add(this.grpSearch);
+            this.Controls.Add(this.grpAdd);
+            this.Controls.Add(this.grpUpdate);
+            this.Controls.Add(this.grpDelete);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.pictureBox1);
@@ -724,6 +729,7 @@
             this.grpSearch.PerformLayout();
             this.grpUpdate.ResumeLayout(false);
             this.grpUpdate.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgUpdate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnUpdatePrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spnUpdateQuantity)).EndInit();
             this.grpDelete.ResumeLayout(false);
@@ -731,7 +737,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgUpdate)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -761,7 +766,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblPK;
         private System.Windows.Forms.Label lblPrimaryKey;
-        private System.Windows.Forms.Button btnUpdateSupplier;
+        private System.Windows.Forms.Button btnUpdateProduct;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
