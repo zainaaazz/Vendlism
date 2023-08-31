@@ -73,6 +73,16 @@ namespace Vendlism.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ADMIN_LOGIN {
+            get {
+                object obj = ResourceManager.GetObject("ADMIN LOGIN", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap back_icon_png_16 {
             get {
                 object obj = ResourceManager.GetObject("back-icon-png-16", resourceCulture);
@@ -246,6 +256,16 @@ namespace Vendlism.Properties {
         internal static System.Drawing.Bitmap MaintainUsers {
             get {
                 object obj = ResourceManager.GetObject("MaintainUsers", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NAVIGATION {
+            get {
+                object obj = ResourceManager.GetObject("NAVIGATION", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

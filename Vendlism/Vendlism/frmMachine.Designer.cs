@@ -61,6 +61,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct3)).BeginInit();
@@ -445,11 +447,30 @@
             // 
             this.button3.Location = new System.Drawing.Point(900, 142);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(73, 38);
+            this.button3.Size = new System.Drawing.Size(42, 41);
             this.button3.TabIndex = 32;
             this.button3.Text = "Stock";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(948, 142);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 33;
+            this.button4.Text = "LOGIN";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(949, 171);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 34;
+            this.button5.Text = "nav";
+            this.button5.UseVisualStyleBackColor = true;
             // 
             // frmMachine
             // 
@@ -458,6 +479,8 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources.BACKGROUND31;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1062, 688);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox3);
@@ -545,6 +568,8 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
     }
 }
 

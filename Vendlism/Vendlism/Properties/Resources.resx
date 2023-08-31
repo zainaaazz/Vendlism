@@ -139,6 +139,9 @@
   <data name="icons8-help-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-help-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="MaintainStock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MaintainStock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="toggle on1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\toggle on1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -147,6 +150,9 @@
   </data>
   <data name="2C35512F-B31F-4297-9682-9EAC9B4A9DBF" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\2C35512F-B31F-4297-9682-9EAC9B4A9DBF.JPEG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ADMIN LOGIN" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ADMIN LOGIN.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="X2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\X2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,7 +208,7 @@
   <data name="X1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\X1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MaintainStock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MaintainStock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="NAVIGATION" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NAVIGATION.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

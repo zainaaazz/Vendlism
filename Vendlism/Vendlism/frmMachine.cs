@@ -538,5 +538,12 @@ namespace Vendlism
             this.Hide();
             stock.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            frmLogin login = new frmLogin();
+            this.Hide();
+            login.Show();
+        }
     }
 }
