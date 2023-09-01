@@ -17,6 +17,8 @@ namespace Vendlism
             InitializeComponent();
         }
 
+        frmLogin log = new frmLogin();
+
         public void enterHover(String btnName)
         {
             Button btn = Controls.Find(btnName, true).FirstOrDefault() as Button;
@@ -48,17 +50,17 @@ namespace Vendlism
         }
         private void frmNavigation_Load(object sender, EventArgs e)
         {
-            if (lblAdmin.Text == "Admin")
+            if (log.isAdminUser == true)
             {
-                btnReports.Enabled = true;
-                btnUsers.Enabled = true;
-                btnSuppliers.Enabled = true;
+                btnReports.Visible = true;
+                btnUsers.Visible = true;
+                btnSuppliers.Visible = true;
             }
-            else if (lblAdmin.Text == "Not Admin")
+            else if (log.isAdminUser ==false)
             {
-                btnReports.Enabled = false;
-                btnUsers.Enabled = false;
-                btnSuppliers.Enabled = false;
+                btnReports.Visible = false;
+                btnUsers.Visible = false;
+                btnSuppliers.Visible = false;
             }
         }
 

@@ -33,7 +33,6 @@
             this.btnProducts = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
             this.btnOrders = new System.Windows.Forms.Button();
-            this.lblAdmin = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnUsers
@@ -41,7 +40,7 @@
             this.btnUsers.BackColor = System.Drawing.Color.LightGray;
             this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsers.Location = new System.Drawing.Point(32, 99);
+            this.btnUsers.Location = new System.Drawing.Point(32, 283);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.Size = new System.Drawing.Size(384, 39);
             this.btnUsers.TabIndex = 7;
@@ -56,7 +55,7 @@
             this.btnSuppliers.BackColor = System.Drawing.Color.LightGray;
             this.btnSuppliers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuppliers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSuppliers.Location = new System.Drawing.Point(32, 156);
+            this.btnSuppliers.Location = new System.Drawing.Point(32, 223);
             this.btnSuppliers.Name = "btnSuppliers";
             this.btnSuppliers.Size = new System.Drawing.Size(384, 39);
             this.btnSuppliers.TabIndex = 6;
@@ -70,7 +69,7 @@
             this.btnProducts.BackColor = System.Drawing.Color.LightGray;
             this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProducts.Location = new System.Drawing.Point(32, 216);
+            this.btnProducts.Location = new System.Drawing.Point(32, 109);
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Size = new System.Drawing.Size(384, 38);
             this.btnProducts.TabIndex = 5;
@@ -86,7 +85,7 @@
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReports.ForeColor = System.Drawing.Color.Black;
-            this.btnReports.Location = new System.Drawing.Point(32, 354);
+            this.btnReports.Location = new System.Drawing.Point(32, 358);
             this.btnReports.Name = "btnReports";
             this.btnReports.Size = new System.Drawing.Size(384, 39);
             this.btnReports.TabIndex = 4;
@@ -101,7 +100,7 @@
             this.btnOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrders.ForeColor = System.Drawing.Color.Black;
-            this.btnOrders.Location = new System.Drawing.Point(32, 274);
+            this.btnOrders.Location = new System.Drawing.Point(32, 166);
             this.btnOrders.Name = "btnOrders";
             this.btnOrders.Size = new System.Drawing.Size(384, 39);
             this.btnOrders.TabIndex = 8;
@@ -110,16 +109,6 @@
             this.btnOrders.MouseEnter += new System.EventHandler(this.btnOrders_MouseEnter);
             this.btnOrders.MouseLeave += new System.EventHandler(this.btnOrders_MouseLeave);
             // 
-            // lblAdmin
-            // 
-            this.lblAdmin.AutoSize = true;
-            this.lblAdmin.Location = new System.Drawing.Point(335, 42);
-            this.lblAdmin.Name = "lblAdmin";
-            this.lblAdmin.Size = new System.Drawing.Size(35, 13);
-            this.lblAdmin.TabIndex = 9;
-            this.lblAdmin.Text = "label1";
-            this.lblAdmin.Visible = false;
-            // 
             // frmNavigation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -127,7 +116,6 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources.NAVIGATION;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(446, 499);
-            this.Controls.Add(this.lblAdmin);
             this.Controls.Add(this.btnOrders);
             this.Controls.Add(this.btnUsers);
             this.Controls.Add(this.btnSuppliers);
@@ -139,7 +127,6 @@
             this.Text = "frmNavigation";
             this.Load += new System.EventHandler(this.frmNavigation_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -150,6 +137,5 @@
         public System.Windows.Forms.Button btnProducts;
         public System.Windows.Forms.Button btnReports;
         public System.Windows.Forms.Button btnOrders;
-        public System.Windows.Forms.Label lblAdmin;
     }
 }

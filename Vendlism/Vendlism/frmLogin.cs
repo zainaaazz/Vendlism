@@ -19,11 +19,33 @@ namespace Vendlism
         SqlDataAdapter adapter;
         SqlDataReader reader;
 
-        Boolean isAdmin = false;
-        frmNavigation NavForm = new frmNavigation();
+        public Boolean isAdminUser = false;
+        
 
         public string connectionString = @"Data Source=LAPTOP-7C5EDQSL\SQLEXPRESS;Initial Catalog=Vendilism;Integrated Security=True; Connect Timeout=30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
+        public void returnToNav()
+        {
+            frmNavigation NavForm = new frmNavigation();
+
+         //   MessageBox.Show(isAdminUser.ToString());
+
+            if (isAdminUser == true)
+            {
+                NavForm.btnReports.Visible = true;
+                NavForm.btnUsers.Visible = true;
+                NavForm.btnSuppliers.Visible = true;
+            }
+            else
+            {
+                NavForm.btnReports.Visible = false;
+                NavForm.btnUsers.Visible = false;
+                NavForm.btnSuppliers.Visible = false;
+            }
+
+            NavForm.ShowDialog();
+            this.Close();
+        }
 
         public frmLogin()
         {
@@ -136,15 +158,12 @@ namespace Vendlism
 
                             if (reader.GetValue(3).ToString() == "True")
                             {
-                                isAdmin = true;
+                                isAdminUser = true;
                             }
-                            else
-                            {
-                                isAdmin = false;
-                            }
-                              
                             
 
+
+                           // MessageBox.Show(isAdminUser.ToString());
                         }
                         else
                         {
@@ -160,29 +179,7 @@ namespace Vendlism
                     {
                         errorProvider1.SetError(txtPassword, "");
 
-                        
-
-                        if (isAdmin == true)
-                        {
-                            NavForm.lblAdmin.Text = "Admin";
-
-
-
-                        }
-                        else if (isAdmin == false)
-                        {
-                            NavForm.lblAdmin.Text = "Not Admin";
-                            NavForm.btnReports.Enabled = false;
-                            NavForm.btnUsers.Enabled = false;
-                            NavForm.btnSuppliers.Enabled = false;
-                          //  NavForm.btn.Enabled = false;
-
-
-                        }
-
-                       
-                        NavForm.ShowDialog();
-                        this.Close();
+                        returnToNav();
                     }
                     else
                     {
