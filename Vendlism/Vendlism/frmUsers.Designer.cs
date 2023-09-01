@@ -206,7 +206,7 @@
             this.grpAdd.Controls.Add(this.label3);
             this.grpAdd.Controls.Add(this.label2);
             this.grpAdd.Controls.Add(this.label1);
-            this.grpAdd.Location = new System.Drawing.Point(645, 315);
+            this.grpAdd.Location = new System.Drawing.Point(292, 315);
             this.grpAdd.Name = "grpAdd";
             this.grpAdd.Size = new System.Drawing.Size(752, 250);
             this.grpAdd.TabIndex = 2;

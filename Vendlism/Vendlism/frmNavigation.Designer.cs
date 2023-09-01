@@ -40,7 +40,7 @@
             this.btnUsers.BackColor = System.Drawing.Color.LightGray;
             this.btnUsers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsers.Location = new System.Drawing.Point(32, 283);
+            this.btnUsers.Location = new System.Drawing.Point(32, 279);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.Size = new System.Drawing.Size(384, 39);
             this.btnUsers.TabIndex = 7;
@@ -61,6 +61,7 @@
             this.btnSuppliers.TabIndex = 6;
             this.btnSuppliers.Text = "MAINTAIN SUPPLIERS";
             this.btnSuppliers.UseVisualStyleBackColor = false;
+            this.btnSuppliers.Click += new System.EventHandler(this.btnSuppliers_Click);
             this.btnSuppliers.MouseEnter += new System.EventHandler(this.btnSuppliers_MouseEnter);
             this.btnSuppliers.MouseLeave += new System.EventHandler(this.btnSuppliers_MouseLeave);
             // 

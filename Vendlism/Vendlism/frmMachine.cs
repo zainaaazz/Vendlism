@@ -26,6 +26,8 @@ namespace Vendlism
         public string connectionString = @"Data Source=LAPTOP-7C5EDQSL\SQLEXPRESS;Initial Catalog=Vendilism;Integrated Security=True; Connect Timeout=30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public int price;
+        private frmLogin frmLogin;
+        private frmNavigation frmNavigation;
 
         public frmMachine()
         {
@@ -527,14 +529,14 @@ namespace Vendlism
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            frmSuppliers supp = new frmSuppliers();
+            frmSuppliers supp = new frmSuppliers(frmLogin);
             this.Hide();
             supp.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            frmStockItems stock = new frmStockItems();
+            frmStockItems stock = new frmStockItems(frmLogin);
             this.Hide();
             stock.Show();
         }
@@ -548,9 +550,16 @@ namespace Vendlism
 
         private void button5_Click(object sender, EventArgs e)
         {
-            frmNavigation nav = new frmNavigation();
+            frmNavigation nav = new frmNavigation(frmLogin);
             this.Hide();
             nav.Show();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            frmPlacedOrders orders = new frmPlacedOrders();
+            this.Hide();
+            orders.Show();
         }
     }
 }

@@ -23,6 +23,8 @@ namespace Vendlism
 
 
         Boolean checkedChanged = false;
+        private frmLogin frmLogin;
+        private frmNavigation frmNavigation;
 
         string oldUsername = "";
 
@@ -917,7 +919,7 @@ namespace Vendlism
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             //return to main homepage 
-            frmNavigation nav = new frmNavigation();
+            frmNavigation nav = new frmNavigation(frmLogin);
             this.Hide();
             nav.Show();
 

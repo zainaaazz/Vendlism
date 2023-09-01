@@ -233,6 +233,26 @@ namespace Vendlism.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap MaintainOrders {
+            get {
+                object obj = ResourceManager.GetObject("MaintainOrders", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap MaintainProducts {
+            get {
+                object obj = ResourceManager.GetObject("MaintainProducts", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MaintainStock {
             get {
                 object obj = ResourceManager.GetObject("MaintainStock", resourceCulture);
@@ -256,6 +276,16 @@ namespace Vendlism.Properties {
         internal static System.Drawing.Bitmap MaintainUsers {
             get {
                 object obj = ResourceManager.GetObject("MaintainUsers", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ManageOrders {
+            get {
+                object obj = ResourceManager.GetObject("ManageOrders", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

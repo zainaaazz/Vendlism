@@ -26,11 +26,18 @@ namespace Vendlism
         int count = 0;
 
         Boolean updateIMG = false;
+
         byte[] updateImageData;
 
-        public frmStockItems()
+        private frmLogin frmLogin;
+        private frmNavigation frmNavigation;
+
+        public frmStockItems(frmLogin frmLogin)
         {
+
             InitializeComponent();
+            this.frmLogin = frmLogin;
+
         }
 
         private Image ByteArrayToImage(byte[] byteArray)
@@ -799,9 +806,9 @@ namespace Vendlism
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            frmNavigation nav = new frmNavigation();
+            frmNavigation nav = new frmNavigation(frmLogin);
 
-            if (log.isAdminUser == false)
+            if (frmLogin != null && frmLogin.isAdminUser == false)
             {
                 nav.btnReports.Visible = false;
                 nav.btnUsers.Visible = false;
@@ -814,11 +821,8 @@ namespace Vendlism
                 nav.btnSuppliers.Visible = true;
             }
 
-           
-
-
             this.Hide();
-            nav.ShowDialog();
+            nav.ShowDialog(); 
         }
     }
 }

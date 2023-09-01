@@ -11,10 +11,33 @@ using System.Windows.Forms;
 namespace Vendlism
 {
     public partial class frmNavigation : Form
+
     {
-        public frmNavigation()
+        private frmLogin frmLogin;
+        //public bool isAdminUser { set; get; }
+
+        public frmNavigation(frmLogin frmLogin)
         {
             InitializeComponent();
+            //this.isAdminUser = isAdminUser;
+            this.frmLogin = frmLogin;
+            UpdateButtonVisibility();
+        }
+
+        private void UpdateButtonVisibility()
+        {
+            if(frmLogin != null && frmLogin.isAdminUser)
+            {
+                btnReports.Visible = true;
+                btnUsers.Visible = true;
+                btnSuppliers.Visible = true;
+            }
+            else
+            {
+                btnReports.Visible = false;
+                btnUsers.Visible = false;
+                btnSuppliers.Visible = false;
+            }
         }
 
         frmLogin log = new frmLogin();
@@ -50,7 +73,8 @@ namespace Vendlism
         }
         private void frmNavigation_Load(object sender, EventArgs e)
         {
-            if (log.isAdminUser == true)
+            UpdateButtonVisibility();
+            /*if (log.isAdminUser == true)
             {
                 btnReports.Visible = true;
                 btnUsers.Visible = true;
@@ -61,7 +85,7 @@ namespace Vendlism
                 btnReports.Visible = false;
                 btnUsers.Visible = false;
                 btnSuppliers.Visible = false;
-            }
+            }*/
         }
 
         private void btnUsers_MouseEnter(object sender, EventArgs e)
@@ -123,10 +147,17 @@ namespace Vendlism
 
         private void btnProducts_Click(object sender, EventArgs e)
         {
-            frmStockItems stock = new frmStockItems();
+            frmStockItems stock = new frmStockItems(frmLogin);
             this.Hide();
             stock.Show();
 
+        }
+
+        private void btnSuppliers_Click(object sender, EventArgs e)
+        {
+            frmSuppliers supp = new frmSuppliers(frmLogin);
+            this.Hide();
+            supp.Show();
         }
     }
 }

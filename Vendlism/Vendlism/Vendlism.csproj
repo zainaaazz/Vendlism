@@ -101,6 +101,12 @@
     <Compile Include="frmNavigation.Designer.cs">
       <DependentUpon>frmNavigation.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPlacedOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlacedOrders.Designer.cs">
+      <DependentUpon>frmPlacedOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmStockItems.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmNavigation.resx">
       <DependentUpon>frmNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlacedOrders.resx">
+      <DependentUpon>frmPlacedOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmStockItems.resx">
       <DependentUpon>frmStockItems.cs</DependentUpon>
@@ -179,6 +188,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>Database1.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\MaintainProducts.png" />
+    <None Include="Resources\ManageOrders.png" />
+    <None Include="Resources\MaintainOrders.png" />
     <None Include="Resources\NAVIGATION.png" />
     <None Include="Resources\ADMIN LOGIN.png" />
     <None Include="Resources\MaintainStock.png" />

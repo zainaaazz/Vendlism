@@ -14,6 +14,7 @@ namespace Vendlism
     public partial class frmLogin : Form
     {
         //test
+        private frmNavigation frmNavigation;
 
         SqlConnection conn;
         SqlCommand command;
@@ -22,27 +23,31 @@ namespace Vendlism
 
         public Boolean isAdminUser = false;
         
-
+        /// <summary>
+        /// ///
+        /// </summary>
         public string connectionString = @"Data Source=LAPTOP-7C5EDQSL\SQLEXPRESS;Initial Catalog=Vendilism;Integrated Security=True; Connect Timeout=30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         public void returnToNav()
         {
-            frmNavigation NavForm = new frmNavigation();
+            frmNavigation NavForm = new frmNavigation(this);
 
-         //   MessageBox.Show(isAdminUser.ToString());
+           MessageBox.Show(isAdminUser.ToString());
 
-            if (isAdminUser == true)
-            {
-                NavForm.btnReports.Visible = true;
-                NavForm.btnUsers.Visible = true;
-                NavForm.btnSuppliers.Visible = true;
-            }
-            else
-            {
-                NavForm.btnReports.Visible = false;
+           //if (isAdminUser)
+           // {
+                /* NavForm.btnReports.Visible = true;
+                 NavForm.btnUsers.Visible = true;
+                 NavForm.btnSuppliers.Visible = true;*/
+                //NavForm.log.isAdminUser = true;
+           // }
+           // else
+            //{
+               /* NavForm.btnReports.Visible = false;
                 NavForm.btnUsers.Visible = false;
-                NavForm.btnSuppliers.Visible = false;
-            }
+                NavForm.btnSuppliers.Visible = false;*/
+
+           // }*/
 
             NavForm.ShowDialog();
             this.Close();
@@ -129,6 +134,22 @@ namespace Vendlism
             string username = txtUsername.Text;
             string password = txtPassword.Text;
 
+            if(password == decPass)
+            {
+                frmNavigation NavForm = new frmNavigation(this);
+                frmNavigation.Show();
+
+
+                if (isAdminUser)
+                {
+                    //NavForm.log.isAdminUser = true;
+                }
+                else
+                {
+                    //NavForm.log.isAdminUser = false;
+                }
+            }
+
            
 
             //  Boolean usernameFound = false;
@@ -161,10 +182,23 @@ namespace Vendlism
                             {
                                 isAdminUser = true;
                             }
-                            
+
+                            if (password == decPass)
+                            {
+                                errorProvider1.SetError(txtUsername, "");
+                                errorProvider1.SetError(txtPassword, "");
+
+                                returnToNav();
+                            }
+                            else
+                            {
+                                errorProvider1.SetError(txtPassword, "Invalid Password");
+
+                                txtPassword.Text = "";
+                            }
 
 
-                           // MessageBox.Show(isAdminUser.ToString());
+                            // MessageBox.Show(isAdminUser.ToString());
                         }
                         else
                         {
@@ -176,18 +210,7 @@ namespace Vendlism
 
                     conn.Close();
 
-                    if (password == decPass)
-                    {
-                        errorProvider1.SetError(txtPassword, "");
-
-                        returnToNav();
-                    }
-                    else
-                    {
-                        errorProvider1.SetError(txtPassword, "Invalid Password");
-
-                        txtPassword.Text = "";
-                    }
+                    
 
                 }
                 else

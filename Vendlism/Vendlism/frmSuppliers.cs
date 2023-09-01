@@ -22,10 +22,14 @@ namespace Vendlism
         public string connectionString = @"Data Source=LAPTOP-7C5EDQSL\SQLEXPRESS;Initial Catalog=Vendilism;Integrated Security=True; Connect Timeout=30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         string oldName = "";
-        public frmSuppliers()
+        public frmSuppliers(frmLogin frmLogin)
         {
             InitializeComponent();
+            this.frmLogin = frmLogin;
         }
+
+        private frmLogin frmLogin;
+        private frmNavigation frmNavigation;
 
         private void frmSuppliers_Load(object sender, EventArgs e)
         {
@@ -827,8 +831,25 @@ namespace Vendlism
             }
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            frmNavigation nav = new frmNavigation(frmLogin);
 
+            if (frmLogin != null && frmLogin.isAdminUser == false)
+            {
+                nav.btnReports.Visible = false;
+                nav.btnUsers.Visible = false;
+                nav.btnSuppliers.Visible = false;
+            }
+            else
+            {
+                nav.btnReports.Visible = true;
+                nav.btnUsers.Visible = true;
+                nav.btnSuppliers.Visible = true;
+            }
 
-
+            this.Hide();
+            nav.ShowDialog();
+        }
     }
 }

@@ -63,6 +63,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgProduct3)).BeginInit();
@@ -107,7 +108,7 @@
             // 
             this.btnAdmin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnAdmin.Location = new System.Drawing.Point(787, 142);
+            this.btnAdmin.Location = new System.Drawing.Point(788, 162);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Size = new System.Drawing.Size(52, 41);
             this.btnAdmin.TabIndex = 2;
@@ -473,6 +474,16 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(765, 133);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(75, 23);
+            this.button6.TabIndex = 35;
+            this.button6.Text = "ORDERS";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // frmMachine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -480,6 +491,7 @@
             this.BackgroundImage = global::Vendlism.Properties.Resources.BACKGROUND31;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1062, 688);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -571,6 +583,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }
 
